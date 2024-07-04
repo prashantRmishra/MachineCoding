@@ -2,6 +2,7 @@
 
 ## This application takes in inputs
     
+
     ```
     number of snakes, their head and tail positions
     number of ladders, their start and end positions
