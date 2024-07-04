@@ -1,0 +1,137 @@
+Enter no. snakes
+9
+62 5
+33 6
+49 9
+88 16
+41 20
+56 53
+98 64
+93 73
+95 75
+9 {33=[snakeStartPosition :33], 49=[snakeStartPosition :49], 98=[snakeStartPosition :98], 88=[snakeStartPosition :88], 56=[snakeStartPosition :56], 41=[snakeStartPosition :41], 93=[snakeStartPosition :93], 62=[snakeStartPosition :62], 95=[snakeStartPosition :95]}
+Enter no. ladders
+8
+2 37
+27 46
+10 32
+51 68
+61 79
+65 84
+71 91
+81 100
+8 {65=[84], 81=[100], 2=[37], 51=[68], 71=[91], 10=[32], 27=[46], 61=[79]}
+Enter no. players
+2
+Gaurav
+Sagar
+2 {0=[player: Gaurav], 1=[player: Sagar]}
+Gaurav rolled dice 4 and moved from 0 to 4
+Sagar rolled dice 5 and moved from 0 to 5
+Gaurav rolled dice 3 and moved from 4 to 7
+Sagar rolled dice 1 and moved from 5 to 6
+Gaurav rolled dice 6 and moved from 7 to 13
+Sagar rolled dice 6 and moved from 6 to 12
+Gaurav rolled dice 2 and moved from 13 to 15
+Sagar rolled dice 5 and moved from 12 to 17
+Gaurav rolled dice 2 and moved from 15 to 17
+Sagar rolled dice 3 and moved from 17 to 20
+Gaurav rolled dice 4 and moved from 17 to 21
+Sagar rolled dice 3 and moved from 20 to 23
+Gaurav rolled dice 6 and moved from 21 to 27
+ got ladder, Gaurav went from postion 27 to 46
+Sagar rolled dice 1 and moved from 23 to 24
+Gaurav rolled dice 4 and moved from 46 to 50
+Sagar rolled dice 5 and moved from 24 to 29
+Gaurav rolled dice 5 and moved from 50 to 55
+Sagar rolled dice 2 and moved from 29 to 31
+Gaurav rolled dice 3 and moved from 55 to 58
+Sagar rolled dice 4 and moved from 31 to 35
+Gaurav rolled dice 4 and moved from 58 to 62
+snake bit, Gaurav went from position 62to 5
+Sagar rolled dice 5 and moved from 35 to 40
+Gaurav rolled dice 5 and moved from 5 to 10
+ got ladder, Gaurav went from postion 10 to 32
+Sagar rolled dice 6 and moved from 40 to 46
+Gaurav rolled dice 2 and moved from 32 to 34
+Sagar rolled dice 5 and moved from 46 to 51
+ got ladder, Sagar went from postion 51 to 68
+Gaurav rolled dice 6 and moved from 34 to 40
+Sagar rolled dice 5 and moved from 68 to 73
+Gaurav rolled dice 6 and moved from 40 to 46
+Sagar rolled dice 4 and moved from 73 to 77
+Gaurav rolled dice 1 and moved from 46 to 47
+Sagar rolled dice 6 and moved from 77 to 83
+Gaurav rolled dice 2 and moved from 47 to 49
+snake bit, Gaurav went from position 49to 9
+Sagar rolled dice 4 and moved from 83 to 87
+Gaurav rolled dice 4 and moved from 9 to 13
+Sagar rolled dice 5 and moved from 87 to 92
+Gaurav rolled dice 3 and moved from 13 to 16
+Sagar rolled dice 6 and moved from 92 to 98
+snake bit, Sagar went from position 98to 64
+Gaurav rolled dice 6 and moved from 16 to 22
+Sagar rolled dice 3 and moved from 64 to 67
+Gaurav rolled dice 1 and moved from 22 to 23
+Sagar rolled dice 6 and moved from 67 to 73
+Gaurav rolled dice 2 and moved from 23 to 25
+Sagar rolled dice 3 and moved from 73 to 76
+Gaurav rolled dice 5 and moved from 25 to 30
+Sagar rolled dice 3 and moved from 76 to 79
+Gaurav rolled dice 2 and moved from 30 to 32
+Sagar rolled dice 5 and moved from 79 to 84
+Gaurav rolled dice 3 and moved from 32 to 35
+Sagar rolled dice 1 and moved from 84 to 85
+Gaurav rolled dice 6 and moved from 35 to 41
+snake bit, Gaurav went from position 41to 20
+Sagar rolled dice 4 and moved from 85 to 89
+Gaurav rolled dice 4 and moved from 20 to 24
+Sagar rolled dice 2 and moved from 89 to 91
+Gaurav rolled dice 1 and moved from 24 to 25
+Sagar rolled dice 1 and moved from 91 to 92
+Gaurav rolled dice 5 and moved from 25 to 30
+Sagar rolled dice 6 and moved from 92 to 98
+snake bit, Sagar went from position 98to 64
+Gaurav rolled dice 5 and moved from 30 to 35
+Sagar rolled dice 2 and moved from 64 to 66
+Gaurav rolled dice 2 and moved from 35 to 37
+Sagar rolled dice 4 and moved from 66 to 70
+Gaurav rolled dice 1 and moved from 37 to 38
+Sagar rolled dice 1 and moved from 70 to 71
+ got ladder, Sagar went from postion 71 to 91
+Gaurav rolled dice 6 and moved from 38 to 44
+Sagar rolled dice 2 and moved from 91 to 93
+snake bit, Sagar went from position 93to 73
+Gaurav rolled dice 4 and moved from 44 to 48
+Sagar rolled dice 3 and moved from 73 to 76
+Gaurav rolled dice 1 and moved from 48 to 49
+snake bit, Gaurav went from position 49to 9
+Sagar rolled dice 5 and moved from 76 to 81
+ got ladder, Sagar went from postion 81 to 100
+Gaurav rolled dice 3 and moved from 9 to 12
+Sagar rolled dice 3 cant move though
+Gaurav rolled dice 4 and moved from 12 to 16
+Sagar rolled dice 2 cant move though
+Gaurav rolled dice 2 and moved from 16 to 18
+Sagar rolled dice 1 cant move though
+Gaurav rolled dice 3 and moved from 18 to 21
+Sagar rolled dice 2 cant move though
+Sagar rolled dice 2 cant move though
+Gaurav rolled dice 6 and moved from 30 to 36
+Sagar rolled dice 1 cant move though
+Gaurav rolled dice 4 and moved from 36 to 40
+Sagar rolled dice 5 cant move though
+Gaurav rolled dice 4 and moved from 40 to 44
+Sagar rolled dice 1 cant move though
+Gaurav rolled dice 3 and moved from 44 to 47
+Sagar rolled dice 3 cant move though
+Gaurav rolled dice 4 and moved from 47 to 51
+ got ladder, Gaurav went from postion 51 to 68
+Sagar rolled dice 6 cant move though
+Gaurav rolled dice 3 and moved from 68 to 71
+ got ladder, Gaurav went from postion 71 to 91
+Sagar rolled dice 5 cant move though
+Gaurav rolled dice 6 and moved from 91 to 97
+Sagar rolled dice 5 cant move though
+Gaurav rolled dice 3Gaurav wins the game
+game finish
