@@ -1,15 +1,14 @@
 ### Snake and Ladder app in java
 
-### Problem Statement !(https://workat.tech/machine-coding/practice/snake-and-ladder-problem-zgtac9lxwntg)
+
+[Problem Statement](https://workat.tech/machine-coding/practice/snake-and-ladder-problem-zgtac9lxwntg)
 
 ## This application takes in inputs
     
 
-    ```
     number of snakes, their head and tail positions
     number of ladders, their start and end positions
     number of players, their names
-    ```
 
 ### Starting position of players will be 0 ( off the board of size 100)
 
