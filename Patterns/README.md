@@ -47,3 +47,6 @@ For detailed understanding go through Adapter folder
 A outword appearance that is used to conceal a less plesant or credible reality
 
 <a href=""><image src= "../Patterns/Structural/Facade/facade.png" /></a>
+
+Example: Dynamic array like ArrayList in java is an example of this, because ArrayLists are constantly being resized under the hood when the defined capacity is reached.
+
