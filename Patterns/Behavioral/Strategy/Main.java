@@ -1,7 +1,7 @@
 class Main{
     public static void main(String ars[]){
         Vehicle car = new Car();
-        Vehile truck = new Truck();
+        Vehicle truck = new Truck();
         System.out.println(car.calculateValue());
         System.out.println(truck.calculateValue());
         /*

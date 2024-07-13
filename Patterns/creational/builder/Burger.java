@@ -1,4 +1,5 @@
-package Patterns.builder;
+package Patterns.creational.builder;
+
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 
 abstract class Vehicle{
-    public int calculateValue();
+    abstract int calculateValue();
 }
 
 // The above class follows solid principle but below does not 
