@@ -7,6 +7,7 @@ public class SplitwiseUtil {
     HashMap<String, User> users = new HashMap<>();
     public SplitwiseUtil(){
         this.registry  =new HashMap<>();
+        
     }
 
     public void addUser(String n, String email,String phone){
@@ -14,8 +15,12 @@ public class SplitwiseUtil {
         if(!users.containsKey(email)){
             users.put(email, user);
         }
+        //add these details in registry as well
+        for(Map.Entry<String,User> entry : users.entrySet()){
+            registry.put(entry.getKey(), new HashMap<>());
+        }
     }
-    public void operationE(String paidBy, double amount,List<Split> list ){
+    public void operation(String paidBy, double amount,List<Split> list ){
         //if the users has already paid for any user in the list
         
         for(Split split : list){
@@ -33,21 +38,25 @@ public class SplitwiseUtil {
         }
     }
     public void show(){
-        for(Map.Entry<String,HashMap<String,Double>> entry : registry.entrySet()){
-            for(Map.Entry<String,Double> inner : entry.getValue().entrySet()){
-                System.out.println(
-                    inner.getKey() + " owes "+ entry.getKey() +": "+inner.getValue()
-                );
+        for(Map.Entry<String,HashMap<String,Double>> allbalance : registry.entrySet()){
+            for(Map.Entry<String,Double> userbalance : allbalance.getValue().entrySet()){
+                printBalance(allbalance.getKey(), userbalance.getKey(), userbalance.getValue());
             }
         }
     }
     public void show(String id){
-        for(Map.Entry<String, Double> balance :registry.get(id).entrySet()){
-            System.out.println(
-                balance.getKey() + " owes "+ id +": "+balance.getValue()
-            );
+        for(Map.Entry<String, Double> userbalance :registry.get(id).entrySet()){
+            printBalance(id, userbalance.getKey(),userbalance.getValue());
         }
         
+    }
+    public void printBalance(String user1, String user2, double amount){
+        if(amount > 0){
+            System.out.println(user2 + " owes "+ user1 +" :"+amount);
+        }
+        if(amount < 0){
+            System.out.println(user1 + " owes "+ user2 +" :"+ Math.abs(amount));
+        }
     }
 
 }
