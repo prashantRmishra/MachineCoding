@@ -1,0 +1,59 @@
+package parkinglot.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import parkinglot.vehicle.Bike;
+import parkinglot.vehicle.Car;
+import parkinglot.vehicle.Truck;
+
+
+public class Floor {
+    boolean isFull = false;
+    int bikeCount = 0;
+    int carCount = 0;
+    int truckCount =0;
+    List<Bike> bikeSlots =  null;
+    List<Car> carSlots = null;
+    List<Truck> truckSlots = null;
+    int noOfSlots = 0;
+    public Floor(int noOfSlots){
+       bikeCount = 1;
+       bikeSlots = new ArrayList<>();
+       truckCount = 2;
+       truckSlots = new ArrayList<>();
+       carCount = noOfSlots-3;
+       this.noOfSlots = noOfSlots;
+       carSlots = new ArrayList<>();
+    }
+    public int getNoOfSlots(){
+        return this.noOfSlots;
+    }
+    public void setFloorFull(){
+        this.isFull  = true;
+    }
+    public void setFloorNotFull(){
+        this.isFull = false;
+    }
+    public boolean isFloorFull(){
+        return this.isFull;
+    }
+
+    public List<Bike> getBikeSlots(){
+        return this.bikeSlots;
+    }
+    public List<Car> getCarSlots(){
+        return this.carSlots;
+    }
+    public List<Truck> getTruckSlots(){
+        return this.truckSlots;
+    }
+    public void setBikeSlot(Bike b){
+        bikeSlots.add(b);
+    }
+    public void setCarSlot(Car c){
+        carSlots.add(c);
+    }
+    public void setTruckSlot(Truck t){
+        truckSlots.add(t);
+    }
+}
