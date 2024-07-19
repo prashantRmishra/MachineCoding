@@ -5,6 +5,7 @@ import java.util.List;
 import parkinglot.vehicle.Bike;
 import parkinglot.vehicle.Car;
 import parkinglot.vehicle.Truck;
+import parkinglot.vehicle.Vehicle;
 
 
 public class Floor {
@@ -12,9 +13,9 @@ public class Floor {
     int bikeCount = 0;
     int carCount = 0;
     int truckCount =0;
-    List<Bike> bikeSlots =  null;
-    List<Car> carSlots = null;
-    List<Truck> truckSlots = null;
+    List<Vehicle> bikeSlots =  null;
+    List<Vehicle> carSlots = null;
+    List<Vehicle> truckSlots = null;
     int noOfSlots = 0;
     public Floor(int noOfSlots){
        bikeCount = 1;
@@ -38,13 +39,13 @@ public class Floor {
         return this.isFull;
     }
 
-    public List<Bike> getBikeSlots(){
+    public List<Vehicle> getBikeSlots(){
         return this.bikeSlots;
     }
-    public List<Car> getCarSlots(){
+    public List<Vehicle> getCarSlots(){
         return this.carSlots;
     }
-    public List<Truck> getTruckSlots(){
+    public List<Vehicle> getTruckSlots(){
         return this.truckSlots;
     }
     public void setBikeSlot(Bike b){
