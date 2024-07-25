@@ -10,7 +10,7 @@ Demo of the output of the application is show below.
 
 ---
 
-## [Parking Lot](machinecodingexamples/parkinglot/ReadMe.md)
+## [Parking Lot]([machinecodingexamples/parkinglot/ReadMe.md](https://github.com/prashantRmishra/MachineCoding/tree/main/parkinglot#readme))
 This is a terminal/command line based java application that implements **Parking Lot System**
 
 **Purpose**
