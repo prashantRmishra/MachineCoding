@@ -1,4 +1,4 @@
-package parkinglot.service;
+package parkinglot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import parkinglot.vehicle.Vehicle;
 
 public class Floor {
     boolean isFull = false;
-    int bikeCount = 0;
-    int carCount = 0;
-    int truckCount =0;
+    public int bikeCount = 0;
+    public int carCount = 0;
+    public int truckCount =0;
     List<Vehicle> bikeSlots =  null;
     List<Vehicle> carSlots = null;
     List<Vehicle> truckSlots = null;

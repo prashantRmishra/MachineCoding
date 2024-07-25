@@ -1,6 +1,6 @@
 package parkinglot.vehicle;
 
-import parkinglot.service.Floor;
+import parkinglot.Floor;
 
 public class FloorSpecificVehicle {
     Floor floor;
