@@ -1,8 +1,12 @@
-package machinecodingexamples.parkinglot;
+package machinecodingexamples.parkinglot.floor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import machinecodingexamples.parkinglot.slot.BikeSlot;
+import machinecodingexamples.parkinglot.slot.CarSlot;
+import machinecodingexamples.parkinglot.slot.Slot;
+import machinecodingexamples.parkinglot.slot.TruckSlot;
 import machinecodingexamples.parkinglot.vehicle.Bike;
 import machinecodingexamples.parkinglot.vehicle.Car;
 import machinecodingexamples.parkinglot.vehicle.Truck;
@@ -17,6 +21,7 @@ public class Floor {
     List<Vehicle> bikeSlots =  null;
     List<Vehicle> carSlots = null;
     List<Vehicle> truckSlots = null;
+    List<Slot> slots = null;
     int noOfSlots = 0;
     public Floor(int noOfSlots){
        bikeCount = 1;
@@ -26,6 +31,17 @@ public class Floor {
        carCount = noOfSlots-3;
        this.noOfSlots = noOfSlots;
        carSlots = new ArrayList<>();
+
+
+       //for slot class
+       slots.add(new BikeSlot(new ArrayList<Vehicle>(), 1));
+       slots.add(new TruckSlot(new ArrayList<Vehicle>(), 2));
+       slots.add(new CarSlot(new ArrayList<Vehicle>(), noOfSlots-3));
+       
+       ///ends here
+    }
+    public List<Slot> getSlots(){
+        return this.slots;
     }
     public int getNoOfSlots(){
         return this.noOfSlots;

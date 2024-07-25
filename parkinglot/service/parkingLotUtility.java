@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import machinecodingexamples.parkinglot.Floor;
+import machinecodingexamples.parkinglot.floor.Floor;
+import machinecodingexamples.parkinglot.floor.FloorSpecificVehicle;
 import machinecodingexamples.parkinglot.vehicle.Bike;
 import machinecodingexamples.parkinglot.vehicle.Car;
-import machinecodingexamples.parkinglot.vehicle.FloorSpecificVehicle;
 import machinecodingexamples.parkinglot.vehicle.Truck;
 import machinecodingexamples.parkinglot.vehicle.Vehicle;
 import machinecodingexamples.parkinglot.vehicle.VehicleType;
@@ -34,9 +34,6 @@ public class parkingLotUtility {
     private void setParkingId(String parkingId) {
         this.parkingId = parkingId;
     }
-    private String getParkingId(){
-        return this.parkingId;
-    }
     public String parkVehicle(VehicleType vehicleType, String regNumber, String color){
         //first find empty floor 
         String parkingTicket = "";
@@ -53,13 +50,14 @@ public class parkingLotUtility {
     }
     public boolean slotOfVehileTypeAvailable(Floor floor,VehicleType vehicleType){
         if(vehicleType == VehicleType.Bike){
-            return floor.bikeCount-floor.getBikeSlots().size() > 0;
+            //note on the given floor bike is at index 0, then truck then car
+            return floor.getSlots().get(0).isSlotFull();
         }
         if(vehicleType == VehicleType.Car){
-            return floor.carCount - floor.getCarSlots().size() > 0;
+            return floor.getSlots().get(2).isSlotFull();
         }
         else if (vehicleType == VehicleType.Truck){
-            return floor.truckCount-floor.getTruckSlots().size() > 0;
+            return floor.getSlots().get(1).isSlotFull();
         }
         else{
             System.out.println("Enter valid VehicleType ");
@@ -67,13 +65,13 @@ public class parkingLotUtility {
         }
 
     }
-
+///prashant
     public String park( int floorNumber, Floor floor, VehicleType vehicleType, String reg, String color,String parkingTicket){
         Vehicle vehicle = null;
         
         if(vehicleType.equals(VehicleType.Bike)){
             vehicle = new Bike(reg,color);
-            floor.getBikeSlots().add(vehicle);
+            floor.getSlots().get(0).getVehicleSlots().add(vehicle);
             parkingTicket = parkingId+"_"+floorNumber+"_"+ floor.getBikeSlots().size();
             
         }

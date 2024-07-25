@@ -1,6 +1,6 @@
-package machinecodingexamples.parkinglot.vehicle;
+package machinecodingexamples.parkinglot.floor;
 
-import machinecodingexamples.parkinglot.Floor;
+import machinecodingexamples.parkinglot.vehicle.Vehicle;
 
 public class FloorSpecificVehicle {
     Floor floor;
