@@ -34,9 +34,9 @@ public class Floor {
 
 
        //for slot class
-       slots.add(new BikeSlot(new ArrayList<Vehicle>(), 1));
-       slots.add(new TruckSlot(new ArrayList<Vehicle>(), 2));
-       slots.add(new CarSlot(new ArrayList<Vehicle>(), noOfSlots-3));
+       slots.add(new BikeSlot(1));
+       slots.add(new TruckSlot(2));
+       slots.add(new CarSlot(noOfSlots-3));
        
        ///ends here
     }
