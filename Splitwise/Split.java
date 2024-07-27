@@ -1,4 +1,5 @@
-package machinecodingexamples.Splitwise;
+package Splitwise;
+
 public class Split {
     String userid;
     double splitAmount;

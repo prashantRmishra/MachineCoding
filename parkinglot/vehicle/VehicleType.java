@@ -1,5 +1,5 @@
-package machinecodingexamples.parkinglot.vehicle;
+package parkinglot.vehicle;
 
 public enum VehicleType {
-    Bike,Car,Truck;
+    Bike, Car, Truck;
 }

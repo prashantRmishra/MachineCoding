@@ -1,4 +1,3 @@
-package machinecodingexamples.SnakeAndLadder;
 public class Snake{
     int start;
     int end;

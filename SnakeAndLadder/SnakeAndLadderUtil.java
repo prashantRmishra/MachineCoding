@@ -1,4 +1,3 @@
-package machinecodingexamples.SnakeAndLadder;
 import java.util.Map;
 import java.util.Random;
 

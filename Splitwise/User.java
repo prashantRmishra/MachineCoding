@@ -1,4 +1,4 @@
-package machinecodingexamples.Splitwise;
+package Splitwise;
 
 public class User {
     public String userId;

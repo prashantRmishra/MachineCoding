@@ -1,9 +1,9 @@
-package machinecodingexamples.parkinglot.slot;
+package parkinglot.slot;
 
-public class CarSlot  extends Slot{
+public class CarSlot extends Slot {
 
     public CarSlot(int size) {
         super(size);
     }
-    
+
 }

@@ -1,16 +1,17 @@
-package machinecodingexamples.parkinglot.service;
+package parkinglot.service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import machinecodingexamples.parkinglot.floor.Floor;
-import machinecodingexamples.parkinglot.floor.FloorSpecificVehicle;
-import machinecodingexamples.parkinglot.vehicle.Bike;
-import machinecodingexamples.parkinglot.vehicle.Car;
-import machinecodingexamples.parkinglot.vehicle.Truck;
-import machinecodingexamples.parkinglot.vehicle.Vehicle;
-import machinecodingexamples.parkinglot.vehicle.VehicleType;
+
+import parkinglot.floor.Floor;
+import parkinglot.floor.FloorSpecificVehicle;
+import parkinglot.vehicle.Bike;
+import parkinglot.vehicle.Car;
+import parkinglot.vehicle.Truck;
+import parkinglot.vehicle.Vehicle;
+import parkinglot.vehicle.VehicleType;
 
 public class parkingLotUtility {
     // tree map to keep then sorted based on floor no.
@@ -39,7 +40,7 @@ public class parkingLotUtility {
         String parkingTicket = "";
         for (Map.Entry<Integer, Floor> floor : parkingLot.entrySet()) {
             if (!floor.getValue().isFloorFull()) {
-                if (slotOfVehileTypeAvailable(floor.getValue(), vehicleType)) {
+                if (!slotOfVehileTypeAvailable(floor.getValue(), vehicleType)) {
                     parkingTicket = park(floor.getKey(), floor.getValue(), vehicleType, regNumber, color,
                             parkingTicket);
                     break;
@@ -75,12 +76,12 @@ public class parkingLotUtility {
         }
         if (vehicleType.equals(VehicleType.Car)) {
             vehicle = new Car(reg, color);
-            int slotNumber = floor.getSlots().get(0).addNewVehicle(vehicle);
+            int slotNumber = floor.getSlots().get(2).addNewVehicle(vehicle);
             parkingTicket = parkingId + "_" + floorNumber + "_" + slotNumber;
         }
         if (vehicleType.equals(VehicleType.Truck)) {
             vehicle = new Truck(reg, color);
-            int slotNumber = floor.getSlots().get(0).addNewVehicle(vehicle);
+            int slotNumber = floor.getSlots().get(1).addNewVehicle(vehicle);
             parkingTicket = parkingId + "_" + floorNumber + "_" + slotNumber;
         }
         checkIfFloorIsFull(floor);
@@ -89,11 +90,12 @@ public class parkingLotUtility {
     }
 
     public void checkIfFloorIsFull(Floor floor) {
-        int totalVehicleParked = floor.getBikeSlots().size() + floor.getCarSlots().size()
-                + floor.getTruckSlots().size();
+        long totalVehicleParked = floor.getSlots().get(0).getOccupiedSlotsCount() +
+                floor.getSlots().get(1).getOccupiedSlotsCount() + floor.getSlots().get(2).getOccupiedSlotsCount();
         if (totalVehicleParked == floor.getNoOfSlots()) {
             floor.setFloorFull();
-        }
+        } else
+            floor.setFloorNotFull();
     }
 
     public void unparkVehicle(String parkingId) {
@@ -106,11 +108,13 @@ public class parkingLotUtility {
                 floorSpecificVehicle.getFloor().getSlots().get(0).unparkVehicle(floorSpecificVehicle.getVehicle());
             } else if (floorSpecificVehicle.getVehicle() instanceof Truck)
                 floorSpecificVehicle.getFloor().getSlots().get(1).unparkVehicle(floorSpecificVehicle.getVehicle());
+            checkIfFloorIsFull(floorSpecificVehicle.getFloor());
             System.out.println("Unparked vehicle");
 
         } else
             System.out.println("ParkingId " + parkingId + " does not exists");
     }
+
     public void display(String displayType, VehicleType vehicleType) {
         switch (displayType) {
             case "free_count": {
@@ -146,8 +150,7 @@ public class parkingLotUtility {
                 List<Integer> list = floors.getValue().getSlots().get(1).getAllOccupiedSlotNumbers();
                 printFreeOrOccupiedSlots(floor, list, vehicleType, true);
             }
-        }
-        else if (vehicleType.toString().equals("Bike")) {
+        } else if (vehicleType.toString().equals("Bike")) {
             for (Map.Entry<Integer, Floor> floors : parkingLot.entrySet()) {
                 floor = floors.getKey();
                 List<Integer> list = floors.getValue().getSlots().get(0).getAllOccupiedSlotNumbers();

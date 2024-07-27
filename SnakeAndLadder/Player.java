@@ -1,4 +1,3 @@
-package machinecodingexamples.SnakeAndLadder;
 public class Player {
     String name;
     int currentPos;
