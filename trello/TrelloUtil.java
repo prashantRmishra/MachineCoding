@@ -10,8 +10,10 @@ import trello.model.SubProject;
 import trello.model.User;
 
 public class TrelloUtil {
-    private static int boardCounter = 1;
-    private static String boardNamePrefix = "Board_";
+    private static String boardNamePrefix = "B_";
+    private static String subProjectPrefix = "SubProject_";
+    private static String cardPrefix = "card_";
+    //caches for boards, subprojects, and cards
     private HashMap<String,Board> boards = new HashMap<>();
     private HashMap<String,SubProject> subProjectsorLists = new HashMap<>();
     private HashMap<String,Card> cardsMap = new HashMap<>();
@@ -22,7 +24,7 @@ public class TrelloUtil {
         createUser(new User("user3", "ajay", "ajay@gmail.com"));
         createUser(new User("user4", "rahul", "rahul@gmail.com"));
     }
-    public void createUser(User u){
+    private void createUser(User u){
         if(!users.containsKey(u.getUserId())){
             users.put(u.getUserId(), u);
             return;
@@ -30,14 +32,16 @@ public class TrelloUtil {
         System.out.println("Given user with id "+ u.getUserId()+" already exists!");
     }
     public void createBoard(String boardName){
-        Board board = new Board(boardNamePrefix+(boardCounter), boardName, PrivacyType.PUBLIC,boardCounter++);
+        Board board = new Board(boardName, PrivacyType.PUBLIC);
+        //taking hascode value of the object as id
+        board.setId(boardNamePrefix+board.hashCode());
         boards.put(board.getId(), board);
-        System.out.println("Created board:"+board.getId());;
+        System.out.println("Created board:"+board.getId());
     }
     public void updatePrivacyOfBoard(String id, String type){
         PrivacyType defaultPrivacy = PrivacyType.PUBLIC;
         if(type.equals(PrivacyType.PRIVATE.toString())){
-            defaultPrivacy = defaultPrivacy.PRIVATE;
+            defaultPrivacy = PrivacyType.PRIVATE;
         }
         if(boards.containsKey(id)){
             boards.get(id).updatePrivacyType(defaultPrivacy);
@@ -105,11 +109,12 @@ public class TrelloUtil {
     public void createSubProjectOrList(String boardId, String subProjectName){
         if(boards.containsKey(boardId)){
             Board b = boards.get(boardId);
-            int hashCode = b.getLists().hashCode();
-            String subProjectId = boardId+"_subProject_"+hashCode;
-            SubProject subProject = new SubProject(subProjectId, subProjectName);
+            SubProject subProject = new SubProject(subProjectName);
+            String subProjectId = subProjectPrefix+subProject.hashCode();
+            subProject.SetSubjectId(subProjectId);
             b.addSubProject(subProject);
             subProjectsorLists.put(subProjectId, subProject);
+            System.out.println("List or SubProject created with id : "+subProject.getId());
             return;
         }
         System.out.println("given board with id "+boardId+" does not exist");
@@ -124,16 +129,16 @@ public class TrelloUtil {
     public void updateSubProjectorList(String id, String name){
         if(subProjectsorLists.containsKey(id)){
             subProjectsorLists.get(id).updateProjectName(name);
+            System.out.println("name updated for the given list or SubProject id "+ id);
             return;
         }
         System.out.println("List or SubProject with the given id does not exist!");
     }
     public void createCard(String subProjectOrListId, String cardName){
         if(subProjectsorLists.containsKey(subProjectOrListId)){
-            SubProject subProject = subProjectsorLists.get(subProjectOrListId);
-            int hashCode = subProject.getCards().hashCode();
-            String cardId = subProjectOrListId+"_card_"+hashCode;
-            Card c = new Card(cardId, cardName);
+            Card c = new Card(cardName);
+            String cardId = cardPrefix+c.hashCode();
+            c.setId(cardId);
             subProjectsorLists.get(subProjectOrListId).addCardInProject(c);
             System.out.println("card created "+ cardId);
             cardsMap.put(cardId, c);
@@ -168,7 +173,7 @@ public class TrelloUtil {
             System.out.println("User with id "+ userId+" has been assinged to card with id "+ cardId);
             return;
         }
-        System.out.println("User with id "+userId+" assingned to card with id "+ cardId);
+        System.out.println("ard with id "+ cardId);
     }
     public void removeAssigneeFromCard(String cardId){
         if(cardsMap.containsKey(cardId)){
@@ -180,7 +185,7 @@ public class TrelloUtil {
     }
     public void showCard(String id){
         if(!this.cardsMap.containsKey(id)) System.out.println("card with id does not exist");
-        System.out.println(cardsMap.get(id));
+        else System.out.println(cardsMap.get(id));
     }
     public void showOthers(String option, String id) {
         switch (option) {
@@ -202,7 +207,6 @@ public class TrelloUtil {
         }
     }
     public void moveCardToDifferentSubProject(String cardId, String destinationSubProjectId) {
-        SubProject source = null;
         SubProject destination = subProjectsorLists.getOrDefault(destinationSubProjectId, null);
         Card card = cardsMap.getOrDefault(cardId, null);
         if(card!=null){
@@ -212,7 +216,6 @@ public class TrelloUtil {
                     subProject.getCards().remove(card);
                 }
             }
-            cardsMap.remove(cardId);
             System.out.println("card have been moved to destionation SubProject");
             return;
         }

@@ -7,10 +7,12 @@ public class SubProject {
     private String id;
     private String name;
     private List<Card> cards;
-    public SubProject(String id, String name){
-        this.id = id;
+    public SubProject(String name){
         this.name = name;
         cards = new ArrayList<>();
+    }
+    public void SetSubjectId(String id){
+        this.id = id;
     }
     public String getId(){
         return this.id;

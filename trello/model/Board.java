@@ -8,7 +8,6 @@ import java.util.List;
  * This Board represents an independent Project of the company
 */
 public class Board {
-    private int boardCounter = 0;
     private String id;
     private String name;
     private PrivacyType type;
@@ -16,16 +15,14 @@ public class Board {
   
     private HashMap<String, User> members;
     
-    public Board(String id, String name,PrivacyType type,int counter){
-        this.id = id;
+    public Board(String name,PrivacyType type){
         this.name = name;
         this.type = type;
-        boardCounter = counter;
         lists = new HashMap<>();
         members = new HashMap<>();
     }
-    public int getCounter(){
-        return this.boardCounter;
+    public void setId(String id){
+        this.id = id;
     }
     public String getId(){
         return this.id;
