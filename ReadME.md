@@ -35,3 +35,16 @@ Note: *later more vehicles can be accommodated by expanding the scope of the app
 <a href=""><img src = "./parkinglot/parkinglot.png"/></a>
 
 ---
+
+## [Trello App (Similar to Jira)](https://github.com/prashantRmishra/MachineCoding/blob/main/trello/ReadMe.md)
+
+This is a terminal/command line based java application that implements **Project progress tracking like Trello or Jira Board**
+
+**Purpose**
+The purpose of this app is to help in tracking of various projects in an organization
+
+- We can create  Projects called `Board`, sub projects called `List` within `Board` and we and further break down the `List` into sub tasks called `Card`
+
+<a href=""><img src = "./trello/resources/output.png"/></a>
+
+---
