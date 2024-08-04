@@ -1,4 +1,4 @@
-package machinecodingexamples.Splitwise;
+package Splitwise;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class Main {
         */
         
         while(true){
-            System.out.println("Enter operation in the following manner ");
+            System.out.println("\nEnter operation in the following manner ");
             System.out.println("EXPENSE u1 1250 2 u2 u3 EQUAL \n* EXPENSE u1 1250 2 u2 u3 EXACT 370 880 \n* EXPENSE u4 1200 4 u1 u2 u3 u4 PERCENT 40 20 20 20\n* SHOW\n* SHOW u1");
             String commands[]  =sc.nextLine().split(" ");
             switch(commands[0]){

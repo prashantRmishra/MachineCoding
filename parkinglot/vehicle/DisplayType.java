@@ -1,5 +1,5 @@
-package machinecodingexamples.parkinglot.vehicle;
+package parkinglot.vehicle;
 
 public enum DisplayType {
-    free_count,free_slots,occupied_slots;
+    free_count, free_slots, occupied_slots;
 }

@@ -1,8 +1,8 @@
-package machinecodingexamples.parkinglot.vehicle;
+package parkinglot.vehicle;
 
 public class Truck extends Vehicle {
 
-    public Truck(String reg, String color){
-        super(reg,color);
+    public Truck(String reg, String color) {
+        super(reg, color);
     }
 }

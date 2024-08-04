@@ -1,4 +1,4 @@
-package machinecodingexamples.Splitwise;
+package Splitwise;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +12,8 @@ public class SplitwiseUtil {
     }
 
     public void addUser(String n, String email,String phone){
-        User user = new User(n, email, phone);
         if(!users.containsKey(email)){
+            User user = new User(n, email, phone);
             users.put(email, user);
         }
         //add these details in registry as well
