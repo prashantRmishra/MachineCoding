@@ -74,7 +74,7 @@ public class Board {
         return this.members;
     }
     public String toString(){
-        String s = "id:"+id+", name:"+name+", privacy:"+type.toString()+", members:"+members+", listOfSubProjects:"+lists;
+        String s = "{id:"+id+", name:"+name+", privacy:"+type.toString()+", members:"+members+", listOfSubProjects:"+lists+"}";
         return s;
     }
 }

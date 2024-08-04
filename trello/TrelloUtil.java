@@ -45,16 +45,18 @@ public class TrelloUtil {
         }
         if(boards.containsKey(id)){
             boards.get(id).updatePrivacyType(defaultPrivacy);
+            System.out.println("Privacy of the given board updated to "+defaultPrivacy.toString());
             return;
         }
-        System.out.println("board with given id does not exists");
+        System.out.println("Board with given id does not exists");
     }
     public void updateNameOfBoard(String id, String name){
         if(boards.containsKey(id)){
             boards.get(id).updateName(name);;
+            System.out.println("Board name updated to given name "+ name);
             return;
         }
-        System.out.println("board with given id does not exists");
+        System.out.println("Board with given id does not exists");
     }
     public void showBoard(){
         if(boards.size() ==0){
@@ -70,7 +72,7 @@ public class TrelloUtil {
             board = boards.values().stream().filter(b-> b.getId().equals(id)).toList().get(0);
             System.out.println(board);
         } catch (Exception e) {
-            System.out.println("board with given id:"+id+" does not exit!");
+            System.out.println("Board with given id:"+id+" does not exit!");
         }
     }
     public void addMember(String id, String userId){
@@ -80,10 +82,10 @@ public class TrelloUtil {
         }
         if(boards.containsKey(id)){
             boards.get(id).addMemberToThisBoard(users.get(userId));
-            System.out.println("user added to the given board");
+            System.out.println("User added to the given board");
             return;
         }
-        System.err.println("given board does not exist!");
+        System.err.println("Given board does not exist!");
     }
     public void removeMember(String id, String userId){
         if(!users.containsKey(userId)){
@@ -92,18 +94,18 @@ public class TrelloUtil {
         }
         if(boards.containsKey(id)){
             boards.get(id).removeMember(users.get(userId));
-            System.out.println("user removed from the given board");
+            System.out.println("User removed from the given board");
             return;
         }
-        System.out.println("given board or user does not exist!");
+        System.out.println("Given board or user does not exist!");
     }
     public void deleteBoard(String id){
         if(boards.containsKey(id)){
             boards.remove(id);
-            System.out.println("given board is removed");
+            System.out.println("Given board is removed");
             return;
         }
-        System.err.println("given board does not exist");
+        System.err.println("Given board does not exist");
     }
 
     public void createSubProjectOrList(String boardId, String subProjectName){
@@ -117,7 +119,7 @@ public class TrelloUtil {
             System.out.println("List or SubProject created with id : "+subProject.getId());
             return;
         }
-        System.out.println("given board with id "+boardId+" does not exist");
+        System.out.println("Given board with id "+boardId+" does not exist");
     }
     public void showSubProjectOrList(String subProjectId){
        if(subProjectsorLists.containsKey(subProjectId)){
@@ -129,7 +131,7 @@ public class TrelloUtil {
     public void updateSubProjectorList(String id, String name){
         if(subProjectsorLists.containsKey(id)){
             subProjectsorLists.get(id).updateProjectName(name);
-            System.out.println("name updated for the given list or SubProject id "+ id);
+            System.out.println("Name updated for the given list or SubProject id "+ id);
             return;
         }
         System.out.println("List or SubProject with the given id does not exist!");
@@ -140,28 +142,28 @@ public class TrelloUtil {
             String cardId = cardPrefix+c.hashCode();
             c.setId(cardId);
             subProjectsorLists.get(subProjectOrListId).addCardInProject(c);
-            System.out.println("card created "+ cardId);
+            System.out.println("Card created "+ cardId);
             cardsMap.put(cardId, c);
             return;
         }
-        System.out.println("subProject with given id does not exist");
+        System.out.println("SubProject with given id does not exist");
 
     }
     public void updateCardName(String cardId, String name){
         if(cardsMap.containsKey(cardId)){
             cardsMap.get(cardId).updateName(name);
-            System.out.println("card name updated");
+            System.out.println("Card name updated");
             return;
         }
-        System.out.println("card: "+cardId+" does not exists ");
+        System.out.println("Card: "+cardId+" does not exists ");
     }
     public void updateCardDescription(String cardId, String des){
         if(cardsMap.containsKey(cardId)){
             cardsMap.get(cardId).updateDescription(des);
-            System.out.println("card description udpated");
+            System.out.println("Card description udpated");
             return;
         }
-        System.out.println("card: "+cardId+" does not exists ");
+        System.out.println("Card: "+cardId+" does not exists ");
     }
     public void assignCard(String cardId, String userId){
         if(users.get(userId)==null) {
@@ -173,18 +175,18 @@ public class TrelloUtil {
             System.out.println("User with id "+ userId+" has been assinged to card with id "+ cardId);
             return;
         }
-        System.out.println("ard with id "+ cardId);
+        System.out.println("Card with id "+ cardId+" does not exist");
     }
     public void removeAssigneeFromCard(String cardId){
         if(cardsMap.containsKey(cardId)){
             cardsMap.get(cardId).unassign();
-            System.out.println("card is unassigned now");
+            System.out.println("Card is unassigned now");
             return;
         }
-        System.out.println("card with id "+ cardId+" does not exists!");
+        System.out.println("Card with id "+ cardId+" does not exists!");
     }
     public void showCard(String id){
-        if(!this.cardsMap.containsKey(id)) System.out.println("card with id does not exist");
+        if(!this.cardsMap.containsKey(id)) System.out.println("Card with id does not exist");
         else System.out.println(cardsMap.get(id));
     }
     public void showOthers(String option, String id) {
@@ -209,17 +211,20 @@ public class TrelloUtil {
     public void moveCardToDifferentSubProject(String cardId, String destinationSubProjectId) {
         SubProject destination = subProjectsorLists.getOrDefault(destinationSubProjectId, null);
         Card card = cardsMap.getOrDefault(cardId, null);
-        if(card!=null){
+        SubProject source = null;
+        if(card!=null && destination!=null){
             destination.addCardInProject(card);
             for(SubProject subProject : subProjectsorLists.values()){
                 if (subProject.getCards().contains(card)) {
-                    subProject.getCards().remove(card);
+                    source = subProject;
+                    break;
                 }
             }
-            System.out.println("card have been moved to destionation SubProject");
+            source.removeCardInProject(card);
+            System.out.println("Card have been moved to destionation SubProject");
             return;
         }
-        System.out.println("card or given List does not exist");
+        System.out.println("Card or given List does not exist");
     }
     
 }

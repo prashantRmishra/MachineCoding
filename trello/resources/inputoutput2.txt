@@ -1,0 +1,43 @@
+prashantmishra@Prashants-MacBook-Air machinecoding %  cd /Users/prashantmishra/Library/CloudStorage/GoogleDrive-prashantrmishra1@gm
+ail.com/My\ Drive/machinecoding ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home/bin/java -XX:+ShowCod
+eDetailsInExceptionMessages -cp /Users/prashantmishra/Library/Application\ Support/Code/User/workspaceStorage/096adfe66294e06f1d253
+b23abe3a8a6/redhat.java/jdt_ws/machinecoding_ff6595f9/bin trello.Main 
+
+BOARD CREATE work@tech
+Created board:B_1735600054
+SHOW BOARD B_1735600054
+{id:B_1735600054, name:work@tech, privacy:PUBLIC, members:{}, listOfSubProjects:{}}
+BOARD CREATE workat
+Created board:B_918221580
+LIST CREATE B_918221580 Mock Interviews     
+List or SubProject created with id : SubProject_523429237
+LIST CREATE B_918221580 mock interview scheduled
+List or SubProject created with id : SubProject_664740647
+SHOW
+[{id:B_1735600054, name:work@tech, privacy:PUBLIC, members:{}, listOfSubProjects:{}}, {id:B_918221580, name:workat, privacy:PUBLIC, members:{}, listOfSubProjects:{SubProject_523429237=id:SubProject_523429237, name:Mock Interviews, cards:[], SubProject_664740647=id:SubProject_664740647, name:mock interview scheduled, cards:[]}}]
+CARD CREATE SubProject_523429237 abcda@gmail.com
+Card created card_1067040082
+SHOW
+[{id:B_1735600054, name:work@tech, privacy:PUBLIC, members:{}, listOfSubProjects:{}}, {id:B_918221580, name:workat, privacy:PUBLIC, members:{}, listOfSubProjects:{SubProject_523429237=id:SubProject_523429237, name:Mock Interviews, cards:[id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:no user assinged], SubProject_664740647=id:SubProject_664740647, name:mock interview scheduled, cards:[]}}]
+LIST SHOW SubProject_523429237
+Invalid input
+SHOW LIST SubProject_523429237
+id:SubProject_523429237, name:Mock Interviews, cards:[id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:no user assinged]
+SHOW LIST SubProject_664740647
+id:SubProject_664740647, name:mock interview scheduled, cards:[]
+CARD card_1067040082 MOVE SubProject_664740647
+Card have been moved to destionation SubProject
+SHOW LIST SubProject_664740647
+id:SubProject_664740647, name:mock interview scheduled, cards:[id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:no user assinged]
+SHOW LIST SubProject_523429237
+id:SubProject_523429237, name:Mock Interviews, cards:[]
+CARD card_1067040082 ASSIGN user1
+User with id user1 has been assinged to card with id card_1067040082
+SHOW LIST SubProject_664740647
+id:SubProject_664740647, name:mock interview scheduled, cards:[id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:user1]
+CARD card_1067040082 UNASSIGN
+Card is unassigned now
+SHOW LIST SubProject_664740647
+id:SubProject_664740647, name:mock interview scheduled, cards:[id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:no user assinged]
+SHOW CARD card_1067040082
+id:card_1067040082, name:abcda@gmail.com, description:null, AssignedUser:no user assinged

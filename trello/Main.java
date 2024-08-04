@@ -20,7 +20,7 @@ public class Main {
                         if(commands.length ==3) {
                             if(commands[1].equals("CREATE")) util.createBoard(commands[2]);
                             else if(commands[1].equals("DELETE")) util.deleteBoard(commands[2]);
-                            else System.out.println("invalid input");
+                            else System.out.println("Invalid input");
                         }
                         else if(commands[2].equals("name")){
                             util.updateNameOfBoard(commands[1], commands[3]);
@@ -34,7 +34,7 @@ public class Main {
                         else if(commands[2].equals("REMOVE_MEMBER")){
                             util.removeMember(commands[1], commands[3]);
                         }
-                        else System.out.println("invalid input");
+                        else System.out.println("Invalid input");
                         break;
                     }
                     case "LIST":{
@@ -52,7 +52,7 @@ public class Main {
                             }
                             util.updateSubProjectorList(commands[1], listName.trim());
                         }
-                        else System.out.println("invalid input");
+                        else System.out.println("Invalid input");
                         break;
                     }
                     case "CARD":{
@@ -82,6 +82,7 @@ public class Main {
                         else if(commands[2].equals("MOVE")){
                             util.moveCardToDifferentSubProject(commands[1],commands[3]);
                         }
+                        else System.out.println("Please enter valid input!");
                         break;
                     }
                     case "EXIT": {
@@ -89,7 +90,7 @@ public class Main {
                         break;
                     }
                     default :{
-                        System.out.println("please given valid input");
+                        System.out.println("Please given valid input");
                     }
                 }
             }

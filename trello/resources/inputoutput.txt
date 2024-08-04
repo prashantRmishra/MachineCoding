@@ -1,0 +1,73 @@
+prashantmishra@Prashants-MacBook-Air machinecoding %  cd /Users/prashantmishra/Library/CloudStorage/GoogleDrive-prashantrmishra1@gm
+ail.com/My\ Drive/machinecoding ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home/bin/java -XX:+ShowCod
+eDetailsInExceptionMessages -cp /Users/prashantmishra/Library/Application\ Support/Code/User/workspaceStorage/096adfe66294e06f1d253
+b23abe3a8a6/redhat.java/jdt_ws/machinecoding_ff6595f9/bin trello.Main 
+
+SHOW
+No boards to show
+BOARD CREATE work@tech
+Created board:B_1735600054
+SHOW BOARD B_1735600054
+id:B_1735600054, name:work@tech, privacy:PUBLIC, members:{}, listOfSubProjects:{}
+SHOW
+[id:B_1735600054, name:work@tech, privacy:PUBLIC, members:{}, listOfSubProjects:{}]
+BOARD B_1735600054 name workat.tech
+Board name updated to given name workat.tech
+BOARD B_1735600054 privacy PRIVATE
+SHOW BOARD B_1735600054
+id:B_1735600054, name:workat.tech, privacy:PRIVATE, members:{}, listOfSubProjects:{}
+BOARD CREATE workat
+Created board:B_2055281021
+SHOW
+[id:B_2055281021, name:workat, privacy:PUBLIC, members:{}, listOfSubProjects:{}, id:B_1735600054, name:workat.tech, privacy:PRIVATE, members:{}, listOfSubProjects:{}]
+BOARD B_2055281021 ADD_MEMBER user1
+User added to the given board
+BOARD B_2055281021 ADD_MEMBER user2
+User added to the given board
+BOARD B_2055281021 ADD_MEMBER user3
+User added to the given board
+BOARD B_2055281021 REMOVE_MEMBER user3
+User removed from the given board
+BOARD B_2055281021 ADD_MEMBER user3
+User added to the given board
+BOARD B_2055281021 REMOVE_MEMBER user2
+User removed from the given board
+SHOW BOARD B_1735600054
+id:B_1735600054, name:workat.tech, privacy:PRIVATE, members:{}, listOfSubProjects:{}
+SHOW BOARD B_2055281021
+id:B_2055281021, name:workat, privacy:PUBLIC, members:{user1=user Id: user1, name:prashant, email:prashant@gmail.com, user3=user Id: user3, name:ajay, email:ajay@gmail.com}, listOfSubProjects:{}
+BOARD DELETE B_1735600054
+Given board is removed
+SHOW
+[id:B_2055281021, name:workat, privacy:PUBLIC, members:{user1=user Id: user1, name:prashant, email:prashant@gmail.com, user3=user Id: user3, name:ajay, email:ajay@gmail.com}, listOfSubProjects:{}]
+LIST CREATE B_2055281021 Mock Interviews
+List or SubProject created with id : SubProject_1247233941
+SHOW LIST SubProject_1247233941
+id:SubProject_1247233941, name:Mock Interviews, cards:[]
+LIST SubProject_1247233941 name Mock Interviews - Applied
+Name updated for the given list or SubProject id SubProject_1247233941
+SHOW LIST SubProject_1247233941
+id:SubProject_1247233941, name:Mock Interviews - Applied, cards:[]
+LIST CREATE B_2055281021 Mock Interviews - Scheduled
+List or SubProject created with id : SubProject_258952499
+SHOW BOARD B_2055281021
+id:B_2055281021, name:workat, privacy:PUBLIC, members:{user1=user Id: user1, name:prashant, email:prashant@gmail.com, user3=user Id: user3, name:ajay, email:ajay@gmail.com}, listOfSubProjects:{SubProject_1247233941=id:SubProject_1247233941, name:Mock Interviews - Applied, cards:[], SubProject_258952499=id:SubProject_258952499, name:Mock Interviews - Scheduled, cards:[]}
+CARD CREATE SubProject_1247233941 abcd@gmail.com
+Card created card_1067040082
+CARD CREATE SubProject_1247233941 abcda@gmail.com
+Card created card_1325547227
+SHOW LIST SubProject_1247233941
+id:SubProject_1247233941, name:Mock Interviews - Applied, cards:[id:card_1067040082, name:abcd@gmail.com, description:null, AssignedUser:no user assinged, id:card_1325547227, name:abcda@gmail.com, description:null, AssignedUser:no user assinged]
+CARD card_1067040082 abcde@gmail.com
+CARD card_1067040082 name abcde@gmail.com
+Card name updated
+CARD card_1067040082 description At 7PM
+Card description udpated
+SHOW LIST SubProject_1247233941
+id:SubProject_1247233941, name:Mock Interviews - Applied, cards:[id:card_1067040082, name:abcde@gmail.com, description:At 7PM, AssignedUser:no user assinged, id:card_1325547227, name:abcda@gmail.com, description:null, AssignedUser:no user assinged]
+CARD card_1067040082 ASSIGN user1
+User with id user1 has been assinged to card with id card_1067040082
+SHOW CARD card_1067040082
+id:card_1067040082, name:abcde@gmail.com, description:At 7PM, AssignedUser:user1
+SHOW 
+[id:B_2055281021, name:workat, privacy:PUBLIC, members:{user1=user Id: user1, name:prashant, email:prashant@gmail.com, user3=user Id: user3, name:ajay, email:ajay@gmail.com}, listOfSubProjects:{SubProject_1247233941=id:SubProject_1247233941, name:Mock Interviews - Applied, cards:[id:card_1067040082, name:abcde@gmail.com, description:At 7PM, AssignedUser:user1, id:card_1325547227, name:abcda@gmail.com, description:null, AssignedUser:no user assinged], SubProject_258952499=id:SubProject_258952499, name:Mock Interviews - Scheduled, cards:[]}]
