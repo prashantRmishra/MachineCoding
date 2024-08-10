@@ -49,7 +49,7 @@ The purpose of this app is to help in tracking of various projects in an organiz
 
 ---
 
-## [Tick Tack Toe](https://workat.tech/machine-coding/practice/design-tic-tac-toe-smyfi9x064ry)
+## [Tick Tack Toe](https://github.com/prashantRmishra/MachineCoding/blob/main/ticktacktoe/ReadMe.md)
 
 **This is a simple terminal/command-line based java application for the game Tick Tack Toe**
 
@@ -58,9 +58,6 @@ Features
 - Code is extensible to change the size of the grid
 - Code is extensible to allow different types of pieces
 - Code is extensible to allow more than 2 players/piece type
-  
----
-
 
 Sample output of application
 -
