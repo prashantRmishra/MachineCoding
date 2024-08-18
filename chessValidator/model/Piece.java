@@ -5,7 +5,7 @@ public class Piece{
     public Piece(String c, String type){
        piece = c+type;
     }
-    public void move(String startingPostion,String endposition,int[][] grid) throws Exception{
+    public void move(String startingPostion,String endposition,Piece[][] grid) throws Exception{
         //needs to be overridden
     }
     public String getPiece(){
