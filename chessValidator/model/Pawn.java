@@ -3,27 +3,24 @@ public class Pawn extends Piece{
         super(c, t);
     }
 
-    @Override
-   public void move(String startingPosition,String endPosition,Piece[][] grid) throws Exception{
- 
-        char c[] = startingPosition.toCharArray();
-        int col = (int)c[0]+1;
-        int row = c[1]-'a' +1;
-        char d[] = endPosition.toCharArray();
-        int dcol = (int) d[0]+1;
-        int drow = d[1]-'a'+1;
-        if(dcol != col || (row+1)!=drow) throw new Exception("Invalid move");
-        if(grid[drow][dcol]!=null){
-            System.out.println("taking out "+ grid[drow][dcol]);
-            grid[drow][dcol] = this; 
-        }
-        this.setRow(drow);
-        this.setCol(dcol);
+    
+   public String  move(Pair<Integer> start, Pair<Integer> end,Piece[][] grid) throws Exception{
 
+    if(!isValid(start,end,grid)) return "not valid";
+    Piece p = grid[end.getRow()][end.getCol()];
+    System.out.println((p!=null) ? "Removing "+p.getPiece():"");
+    grid[end.getRow()][end.getCol()] = this;
+    return "moved successfully";
    }
-   public boolean isValid(int i, int j,int n){
-    if(i>n || j>n || i<)
-    return false;
+   public boolean isValid(Pair<Integer> start, Pair<Integer> end, Piece[][] grid){
+    if(end.getRow()> grid.length || end.getCol() > grid.length || end.getRow() <1 || end.getCol() <1 ||
+        start.getRow() >grid.length || start.getCol() > grid.length || start.getRow() <1 || start.getCol() <1 || grid[start.getRow()][end.getCol()].getColor()!=this.getColor()) return false;
+    //is at the start location and (going to different column  or going to only 1 step ) or taking out self piece return false;
+    // 
+    else if(start.getRow()==2 && (end.getRow()!=start.getRow()+2)  ||  grid[end.getRow()][end.getCol()].getColor()==this.getColor()) return false;
+    else if(start.getRow() > 2 &&  (end.getRow()!=start.getRow()+1 ) || grid[end.getRow()][end.getCol()].getColor()==this.getColor()) return false;
+    return true;
    }
+   
    
 }

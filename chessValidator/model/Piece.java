@@ -2,12 +2,14 @@ public class Piece{
     String piece;
     int row;
     int col;
+    String color;
     public Piece(String c, String type){
        piece = c+type;
+       color = c;
     }
-    public void move(String startingPostion,String endposition,Piece[][] grid) throws Exception{
-        //needs to be overridden
-    }
+    // public void move(String startingPostion,String endposition,Piece[][] grid) throws Exception{
+    //     //needs to be overridden
+    // }
     public String getPiece(){
         return piece;
     }
@@ -22,5 +24,8 @@ public class Piece{
     }
     public int getCurrentCol(){
         return this.col;
+    }
+    public String getColor(){
+        return this.color;
     }
 }
