@@ -1,12 +1,13 @@
 # Single Responsibility Principle
 
+
 > Every software component should have one and one responsibility only
 
 Software component can be `class`, `method` or `module`
 
-Example a swiss-army knife is multipurpose tool which violates the single responsibility principle of software development, instead a knife is good example that follows Single responsibility (as it can only be used for cutting unlike the swiss-army knife that can be used for cutting, opening can, key scissors,etc)
+Example, a swiss-army knife is a multipurpose tool that violates the single responsibility principle of software development, instead a knife is a good example that follows Single responsibility (as it can only be used for cutting unlike the Swiss-army knife that can be used for cutting, opening can, as a master key, scissors,etc)
 
-Since the change is constant be it real world or in software development, the definition of the Single Responsibility Principle also changes accordingly 
+Since the change is constant be it in the real world or in software development, the definition of the Single Responsibility Principle also changes accordingly 
 
 > Every software component should have one and only one reason to change
 
@@ -27,7 +28,7 @@ import java.sql.Statement;
  * Employee class has details of employee
  * This class is responsible for saving employee details, getting tax of
  * employee and getting
- * details of employee like name, id, address, contact,etc
+ * details of employee like name, id, address, contact, etc.
  */
 public class Employee {
     private String employeeId;
@@ -105,10 +106,10 @@ public class Employee {
 Since the SRP (Single Responsibility Principle) recommends **only one reason for change** in the class, we will have to make some modifications in the Employee class
 
 ---
-Changes in accordance with SIP
---
 
-Now , there is only one reason for which change can occur in `Employee` class
+**Changes by SRP**
+
+Now, there is only one reason for which change can occur in `Employee` class
 
 *Reason for change*: Change in `Employee` attribute
 
@@ -224,7 +225,7 @@ public class TaxCalculator {
 ```
 ---
 
-*Note: All the 3 classes now follow the Single Responsibility Principle, thus following both the definitions*
+*Note: All the 3 classes now follow the Single Responsibility Principle, thus following both definitions*
 
 When creating classes or any software component keep in mind: **Aim for high cohesion and loose coupling** 
 
