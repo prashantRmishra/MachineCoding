@@ -1,14 +1,13 @@
 
-## Liskov Substitution Principle
+## Liskov Substitution Principle (LSP)
 
-**Objects should be replaceable with their subtype without affecting the correctness of the code**
+> Objects should be replaceable with their subtype without affecting the correctness of the code
 
-Lets understand this with inheritance(Is-a relationship)
-example: Ostrich is a bird, Hunchback is a car etc.
+Let's understand this with inheritance(**Is-a** relationship)
+example: Ostrich is a bird, Hunchback is a car, etc.
 
-Lets understand this with example : 
+Example: Racing-car is a car
 
-Racing-car is a car
 
 ```java
 public class Car{
@@ -25,12 +24,12 @@ public class RacingCar extends Car{
         //UNIMPLEMENTED
     }
     public double getCockpitWidth(){
-        //return cockpit width of the racing car
+        //return the cockpit width of the racing car
     }
 }
 ```
-`RacingCar` overrides the `getCabinWidth()` of the car class but leaves it **unimplemented** because Racing cars don't have cabin width( if you see a formula 1 racing car, it does not have any interior space, all it has is just a cockpit where the driver sits)
-Hence the interior space in racing car is called cockpit.
+`RacingCar` overrides the `getCabinWidth()` of the car class but leaves it **unimplemented** because Racing cars don't have cabin width( if you see a Formula 1 racing car, it does not have any interior space, all it has is just a cockpit where the driver sits)
+Hence the interior space in a racing car is called a cockpit.
 Note: Racing cars have some specifications that might not match the generic car
 
 ```java
@@ -49,13 +48,14 @@ public class CarUtil{
     }
 }
 ```
-This is a design that has been exposed, as the for loop will for the the 3rd iteration.
+This is a design that has been exposed, as the for loop will fail for the third iteration.
 To fix this we have to strike at the root which is Inheritance itself.
 
 ---
 
 Solution 1 : (**Breaking the Hierarchy**)
-We have to break the inheritance, instead we will come up with a common parent for both `Car` and `RacingCar`
+
+We have to break the inheritance, instead, we will come up with a common parent for both `Car` and `RacingCar`
 
 We will create a very generic parent class called  `Vehicle`
 
@@ -85,7 +85,7 @@ public class RacingCar extends Vehicle{
     }
 
     public double getCockpitWidth(){
-        //return cockpit width of the racing car
+        //return the cockpit width of the racing car
     }
 }
 ```
@@ -110,13 +110,13 @@ public class VehicleUtils{
 
 Solution 2: **Tell don't ask**
 
-Let's take another example of amazon
-Amazon offers x amount of discount on all the third party products.
-And offers 1.5 times of x on all its in-house products (*Amazon Basics* products are amazon in-house products)
+Let's take another example of Amazon
+Amazon offers x amount of discount on all the third-party products.
+And offers 1.5 times x on all its in-house products (*Amazon Basics* products are Amazon in-house products)
 
 ```java
 public class Product{
-    public double discount = 20;//x amount of discount on all the third party products on amazon
+    public double discount = 20;//x amount of discount on all the third-party products on Amazon
     public double getDiscount(){
         return discount;
     }
@@ -146,9 +146,9 @@ public class PricingUtils{
     }
 }
 ```
-Note that the `if` statement is involved to update the discount amount of `InHouseProduct` which is **against the Liskov substitution principle** ( as we should have been able to replace the object `Product` with its subtype `InHouseProduct`), but here in if statement we are manually updating the discount amount which should not be done.
+Note that the `if` statement is involved in updating the discount amount of `InHouseProduct` which is **against the Liskov substitution principle** ( as we should have been able to replace the object `Product` with its subtype `InHouseProduct`), but here in if statement we are manually updating the discount amount which should not be done.
 
-Slight modification in the `InHouseProduct` class will fix this issue
+A slight modification in the `InHouseProduct` class will fix this issue
 
 
 ```java
@@ -182,6 +182,6 @@ public class PricingUtils{
 }
 ```
 
-***Tell don't ask***: Here we are telling utils class to print all the discount and the utils class does not have to ask anything ( as it was asking by if statement earlier)
+***Tell don't ask***: Here we are telling the utils class to print all the discounts and the utils class does not have to ask anything ( as it was asking by if statement earlier)
 
 ---

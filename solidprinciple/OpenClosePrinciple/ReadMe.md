@@ -1,4 +1,4 @@
-# Open Close Principle
+# Open Close Principle (OCP)
 
 > Software component should be closed for modification, but open for extensions
 

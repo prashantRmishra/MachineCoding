@@ -1,4 +1,4 @@
-# Single Responsibility Principle
+# Single Responsibility Principle (SRP)
 
 
 > Every software component should have one and one responsibility only

@@ -1,6 +1,6 @@
-# Interface Segregation Principle
+# Interface Segregation Principle (ISP)
 
-## No client should be forced to depend a method it does not use
+## No client should be forced to depend on a method it does not use
 
 Before Interface segregation Principle:
 
