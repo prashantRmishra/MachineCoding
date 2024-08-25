@@ -37,7 +37,7 @@ public class Employee {
     private String employeeType;
 
     public void save() {
-        String insert = "'123', 'prashant r mishra', '104 baker street, london', '453-3453','contract'";
+        String insert = MyUtil.serializeIntoString(this);
         Connection connection = null;
         Statement statement = null;
         try {
