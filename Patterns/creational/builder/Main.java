@@ -1,6 +1,4 @@
-package Patterns.builder;
-
-import Patterns.creational.builder.Burger;
+package Patterns.creational.builder;
 
 public class Main {
 

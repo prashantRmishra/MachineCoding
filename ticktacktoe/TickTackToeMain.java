@@ -1,4 +1,4 @@
-package machinecodingexamples.ticktacktoe;
+package ticktacktoe;
 
 import java.util.Scanner;
 

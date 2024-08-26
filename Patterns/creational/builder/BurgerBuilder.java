@@ -1,11 +1,6 @@
-package Patterns.builder;
-
+package Patterns.creational.builder;
 import java.util.ArrayList;
 import java.util.List;
-
-import Patterns.creational.builder.Burger;
-
-
 
 public class BurgerBuilder {
     List<String> ingredients = new ArrayList<>(); 
