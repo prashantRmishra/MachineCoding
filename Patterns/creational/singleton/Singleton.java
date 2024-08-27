@@ -2,6 +2,8 @@ package Patterns.creational.singleton;
 
 public class Singleton {
     // Private static variable to hold the single instance of the class
+    //volatile variable insures that changes made to the variable are immediately visible to all the other threads
+    //volatile modifier insures that the value of the variable is aways written and read from the main memory 
     private static volatile Singleton instance = null;
 
     // Private constructor to prevent instantiation
