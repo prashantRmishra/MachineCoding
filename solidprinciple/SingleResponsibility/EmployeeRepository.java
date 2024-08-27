@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.SingleResponsibility;
+package solidprinciple.SingleResponsibility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

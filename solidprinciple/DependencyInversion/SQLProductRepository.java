@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.DependencyInversion;
+package solidprinciple.DependencyInversion;
 /*
  * Low level module 
 */

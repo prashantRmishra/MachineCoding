@@ -1,8 +1,8 @@
-package machinecodingexamples.solidprinciple.InterfaceSegregation;
+package solidprinciple.InterfaceSegregation;
 
-import machinecodingexamples.solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IFax;
-import machinecodingexamples.solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IPrint;
-import machinecodingexamples.solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IScan;
+import solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IFax;
+import solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IPrint;
+import solidprinciple.InterfaceSegregation.AfterInterfaceSegregation.IScan;
 
 /**
  * 

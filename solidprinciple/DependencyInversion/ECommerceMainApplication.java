@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.DependencyInversion;
+package solidprinciple.DependencyInversion;
 
 public class ECommerceMainApplication {
     public static void main(String agrs[]) {

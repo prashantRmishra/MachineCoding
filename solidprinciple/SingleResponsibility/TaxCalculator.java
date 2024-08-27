@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.SingleResponsibility;
+package solidprinciple.SingleResponsibility;
 
 public class TaxCalculator {
 

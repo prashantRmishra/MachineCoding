@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.InterfaceSegregation;
+package solidprinciple.InterfaceSegregation;
 
 /**
  * @ImultiFunction interface has methods methods related to all output devices present in office space

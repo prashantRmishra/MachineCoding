@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.OpenClosePrinciple;
+package solidprinciple.OpenClosePrinciple;
 
 import java.util.Random;
 

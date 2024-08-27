@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.DependencyInversion;
+package solidprinciple.DependencyInversion;
 
 import java.util.List;
 

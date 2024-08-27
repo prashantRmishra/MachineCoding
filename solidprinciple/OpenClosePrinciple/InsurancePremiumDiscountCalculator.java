@@ -1,4 +1,4 @@
-package machinecodingexamples.solidprinciple.OpenClosePrinciple;
+package solidprinciple.OpenClosePrinciple;
 
 /**
  * Responsible for calculating the insurance premium for the customer
