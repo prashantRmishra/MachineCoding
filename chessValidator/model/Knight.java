@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 public class Knight extends Piece {
 
     public Knight(String c, String type) {

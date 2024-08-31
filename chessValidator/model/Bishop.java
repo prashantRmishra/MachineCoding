@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 public class Bishop extends Piece {
 
     public Bishop(String c, String type) {

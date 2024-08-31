@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 public class Rook extends Piece {
 
     public Rook(String c, String type) {

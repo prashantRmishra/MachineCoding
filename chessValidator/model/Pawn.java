@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 public class Pawn extends Piece{
     public Pawn(String c, String t){
         super(c, t);

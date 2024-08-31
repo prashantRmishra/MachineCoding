@@ -1,3 +1,5 @@
+package Patterns.Structural.Adapter;
+
 class Main{
     public static void main(String args[]){
         UsbPort usbPort1 = new UsbPort();

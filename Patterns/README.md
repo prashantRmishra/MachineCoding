@@ -32,7 +32,7 @@ Similary we can create our own Iterator to iterate through custom objects like l
 
 **Strategy**
 To modify or extend the Behavioral of a class without changing it we can go for Strategy pattern.
-It follows open-closed desing principle(one of the *solid* principles)
+It follows open-closed design principle(one of the *solid* principles)
 Open for extension but closed for modification
 For more understanding [refer]([url](https://dev.to/prashantrmishra/solid-principles-in-java-35lf))
 

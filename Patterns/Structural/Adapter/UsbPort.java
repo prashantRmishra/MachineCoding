@@ -1,3 +1,5 @@
+package Patterns.Structural.Adapter;
+
 class UsbPort{
     public boolean isPortAvailable  = true;
 

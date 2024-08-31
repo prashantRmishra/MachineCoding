@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 public class Piece{
     String piece;
     int row;

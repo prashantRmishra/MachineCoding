@@ -1,3 +1,5 @@
+package SnakeAndLadder;
+
 public class Player {
     String name;
     int currentPos;

@@ -1,3 +1,5 @@
+package Patterns.Behavioral.Strategy;
+
 class Main{
     public static void main(String ars[]){
         Vehicle car = new Car();

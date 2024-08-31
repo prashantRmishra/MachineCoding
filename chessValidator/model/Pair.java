@@ -1,3 +1,5 @@
+package chessValidator.model;
+
 
 public class Pair<T> {
     T row;

@@ -1,3 +1,5 @@
+package Patterns.Behavioral.Strategy;
+
 
 abstract class Vehicle{
     abstract int calculateValue();
