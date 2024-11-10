@@ -2,18 +2,24 @@
 # Library Management System
 
 
-## Requirements:
+## Requirements
 
-### User Management: Users(Member/librarians) should be able to register, login, logout.
-### Book Management: Books can be added/updated/removed/tracked/ and searched by 
-title, author, genre
-### Book borrowing and returning:
-    Member can borrow and return books
-    Librarian can issue book
-### Search catalog:
-    Users should be able to search books based on title, author, genre, etc
-### Notification:
-    Librarian can send notification to member for delayed return of the book
+### User Management
+
+Users(Member/librarians) should be able to register, login, logout.
+### Book Management
+
+Books can be added/updated/removed/tracked/ and searched by title, author, genre
+### Book borrowing and returning
+
+Member can borrow and return books
+Librarian can issue book
+### Search catalog
+
+Users should be able to search books based on title, author, genre, etc
+### Notification
+
+Librarian can send notification to member for delayed return of the book
 
 --------------Assumptions--------------------
 
