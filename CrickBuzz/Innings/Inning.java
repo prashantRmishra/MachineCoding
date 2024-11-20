@@ -1,7 +1,10 @@
-package CrickBuzz;
+package CrickBuzz.Innings;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import CrickBuzz.match.MatchFormat;
+import CrickBuzz.teams.Team;
 
 public class Inning {
     private Team battingTeam;

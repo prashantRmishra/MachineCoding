@@ -1,10 +1,13 @@
-package CrickBuzz;
+package CrickBuzz.observers;
+
+import CrickBuzz.Innings.Ball;
+import CrickBuzz.enums.RunType;
 
 public class BattingUpdaterObserver  implements UpdaterObserver{
 
     @Override
     public void update(Ball ball) {
-        
+
         // will update the score card
         ball.playedBy.battingScoreCard.totalBallPlayed++;
         ball.playedBy.battingScoreCard.wicketDetails = ball.wicket;

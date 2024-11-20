@@ -1,4 +1,4 @@
-package CrickBuzz;
+package CrickBuzz.Innings;
 
 public class BattingScoreCard {
     public int totalRun;

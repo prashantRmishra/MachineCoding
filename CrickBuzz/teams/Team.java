@@ -1,4 +1,4 @@
-package CrickBuzz;
+package CrickBuzz.teams;
 
 import java.util.List;
 import java.util.Queue;

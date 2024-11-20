@@ -1,10 +1,14 @@
-package CrickBuzz;
+package CrickBuzz.teams;
+
+import CrickBuzz.Innings.BattingScoreCard;
+import CrickBuzz.Innings.BowlingScoreCard;
+import CrickBuzz.enums.PlayerType;
 
 public class Player {
     private Person person;
     private PlayerType playerType;
-    BattingScoreCard battingScoreCard;
-    BowlingScoreCard bowlingScoreCard;
+    public BattingScoreCard battingScoreCard;
+    public BowlingScoreCard bowlingScoreCard;
     public Player(String name, PlayerType playerType) {
         person = new Person(name);
         this.playerType = playerType;

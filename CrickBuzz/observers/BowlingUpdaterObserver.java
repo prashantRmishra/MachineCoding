@@ -1,4 +1,7 @@
-package CrickBuzz;
+package CrickBuzz.observers;
+
+import CrickBuzz.Innings.Ball;
+import CrickBuzz.enums.BallType;
 
 public class BowlingUpdaterObserver implements UpdaterObserver {
 

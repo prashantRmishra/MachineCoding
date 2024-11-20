@@ -1,4 +1,4 @@
-package CrickBuzz;
+package CrickBuzz.enums;
 
 public enum Message {
     allout("All out");
@@ -7,7 +7,7 @@ public enum Message {
         this.message = message;
     }
     
-    String getMessage() {
+    public String getMessage() {
         return this.message;
     }
 

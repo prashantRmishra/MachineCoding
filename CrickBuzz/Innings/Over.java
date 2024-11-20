@@ -1,6 +1,10 @@
-package CrickBuzz;
+package CrickBuzz.Innings;
 
 import java.util.List;
+
+import CrickBuzz.enums.BallType;
+import CrickBuzz.teams.Player;
+import CrickBuzz.teams.Team;
 
 public class Over {
     public int no;

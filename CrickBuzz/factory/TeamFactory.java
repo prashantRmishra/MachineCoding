@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import CrickBuzz.Player;
-import CrickBuzz.PlayerType;
-import CrickBuzz.Team;
+import CrickBuzz.enums.PlayerType;
+import CrickBuzz.teams.Player;
+import CrickBuzz.teams.Team;
 
 public class TeamFactory {
     public static Team createTeam(String name){

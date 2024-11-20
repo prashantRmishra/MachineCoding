@@ -1,4 +1,4 @@
-package CrickBuzz;
+package CrickBuzz.enums;
 
 public enum RunType {
     one(1),two(2),three(3),four(4),six(6),wide_run(1);
@@ -6,7 +6,7 @@ public enum RunType {
     RunType(int run){
         this.run = run;
     }
-    int getRun() {
+    public int getRun() {
         return this.run;
     }
 }

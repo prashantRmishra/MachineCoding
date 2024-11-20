@@ -1,4 +1,4 @@
-package CrickBuzz;
+package CrickBuzz.teams;
 
 public class Person {
     private String name;

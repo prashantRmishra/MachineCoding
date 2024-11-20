@@ -1,8 +1,11 @@
-package CrickBuzz;
+package CrickBuzz.match;
 
 import java.time.LocalDate;
 
 import java.util.Random;
+
+import CrickBuzz.Innings.Inning;
+import CrickBuzz.teams.Team;
 
 public class Match {
     private String name;

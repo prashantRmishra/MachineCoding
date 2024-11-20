@@ -1,11 +1,11 @@
-package CrickBuzz;
+package CrickBuzz.match;
 
-public class T20Format implements MatchFormat {
-
+public class OneDayFormat implements MatchFormat{
+    
     private int maxOver;
     private int maxOverPerBowler;
 
-    public T20Format(int mo, int mopb){
+    public OneDayFormat(int mo, int mopb){
         this.maxOver = mo;
         this.maxOverPerBowler = mopb;
     }
@@ -18,5 +18,4 @@ public class T20Format implements MatchFormat {
     public int getMaxOverPerBowler() {
         return this.maxOverPerBowler;
     }
-    
 }

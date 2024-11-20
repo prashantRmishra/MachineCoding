@@ -1,4 +1,6 @@
-package CrickBuzz;
+package CrickBuzz.Innings;
+
+import CrickBuzz.enums.WicketType;
 
 public class Wicket {
     private WicketType type;
