@@ -1,7 +1,7 @@
 Solid principles
 Single responsibility Principle
 
-
+```java
 class Employee{
 	private String id;
 	private String name;
@@ -50,13 +50,14 @@ public class TaxCalculator{
 	}
 }
 
-
+```
 Open close principle:
 Open for extension but closed for modification
 
 
 Take example for Insurance company
 
+```java
 
 //right now only giving HealthInsurance
 
@@ -98,7 +99,7 @@ public class InsuranceCalculator{
 }
 
 
-What is the solution: don't do modification use try to use abstraction to do the job for you
+//What is the solution: don't do modification use try to use abstraction to do the job for you
 	
 interface CustomerProfile{
 	public boolean isLoyalCustomer();
@@ -127,10 +128,11 @@ class InsuranceCalculator{
 		}
 	}
 }
-
+```
 Liskov Substitution principle
 
-An object should be replaciable with its subclasses without affecting the correctness of the code
+```java
+//An object should be replaciable with its subclasses without affecting the correctness of the code
 
 public class Car{
 	public int getInteriorWidth(){
@@ -183,9 +185,9 @@ public class RaceCar extends Vehicle{
 	}
 }
 
-tell don't ask
+//tell don't ask
 
-Take example of amazon where it gives discount  of 10% (2*NormalDisocunt) on purchase of inhouse products i.e AmazonBasics and NormalDiscount of 5% percent of all the other products
+//Take example of amazon where it gives discount  of 10% (2*NormalDisocunt) on purchase of inhouse products i.e AmazonBasics and NormalDiscount of 5% percent of all the other products
 
 public class Product{
 	double discount = //some discount percentange
@@ -238,7 +240,10 @@ class App{
 	}
 }
 
+```
+
 Interface seggregation principle
+
 a class should not be forced to use a method that it does not use
 for example a swiss kife is capable of a lot of things like it can be use as a knife, cutter, opener and other things as well
 But this is not a good seggregation, in sofware engineering a class first of all should have only related methods that it should do, like knife is noly ment for cutting it should not be used for picking a lock right ?
@@ -249,6 +254,7 @@ Example of Interface seggregation
 
 Consider a office space where tools can be categorized as objects
 
+```java
 public class WorkStation{
 	public void print();
 	pubic List<String> getPrintingSpool();
@@ -304,9 +310,9 @@ public class Scanner implements WorkStation{
 	}
 }
 
-This is clear violation of Liskov substitution principle
+//This is clear violation of Liskov substitution principle
 
-Solution is seggragate the fat interface into different interfaces
+//Solution is seggragate the fat interface into different interfaces
 
 public interface IPrint{
 	public void print();
@@ -333,6 +339,7 @@ public class Fax implements IFax{
 	///
 }
 
+```
 
 Dependecy Inversion
 
@@ -344,6 +351,7 @@ Consider example of e-commerce application like Flipkart
 
 ProductCataog(High level) depends on ProductRepository(Low level)
 
+```java
 public class ShoppingCart{
 
 	//hard dependency on the ProductRepository
@@ -360,9 +368,9 @@ public class ProductRepository{
 	}
 }
 
-Issues:
-Shopping cart is repsponsible or intializing the ProductRepository
-and it directly dependent on the ProductRepository which is a clear violation of dependency inversion principle (as the high level is dependent on low level module)
+//Issues:
+//Shopping cart is repsponsible or intializing the ProductRepository
+//and it directly dependent on the ProductRepository which is a clear violation of dependency inversion principle (as the high level is dependent on low level module)
 
 
 public class Repository{
@@ -385,6 +393,7 @@ public class ProductCatalog{
 	Repository repo = ProductFactory.getRepository();
 	List<Product> list = repo.getProducts();
 }
+```
 
 Now the High level ProductCatalog and the low level ProductRepository both depending on abstraction i.e Repository
 This change is called as dip
