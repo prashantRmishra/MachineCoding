@@ -1,6 +1,6 @@
-Solid principles
+# Solid principles
 
-Single responsibility Principle
+## Single responsibility Principle
 
 ```java
 class Employee{
@@ -52,7 +52,8 @@ public class TaxCalculator{
 }
 
 ```
-Open close principle:
+## Open close principle
+
 Open for extension but closed for modification
 
 
@@ -130,7 +131,7 @@ class InsuranceCalculator{
 	}
 }
 ```
-Liskov Substitution principle
+## Liskov Substitution principle
 
 ```java
 //An object should be replaciable with its subclasses without affecting the correctness of the code
@@ -243,15 +244,15 @@ class App{
 
 ```
 
-Interface seggregation principle
+## Interface segregation principle
 
 a class should not be forced to use a method that it does not use
 for example a swiss kife is capable of a lot of things like it can be use as a knife, cutter, opener and other things as well
-But this is not a good seggregation, in sofware engineering a class first of all should have only related methods that it should do, like knife is noly ment for cutting it should not be used for picking a lock right ?
+But this is not a good segregation, in sofware engineering a class first of all should have only related methods that it should do, like knife is noly ment for cutting it should not be used for picking a lock right ?
 
 
 
-Example of Interface seggregation
+Example of Interface segregation
 
 Consider a office space where tools can be categorized as objects
 
@@ -313,7 +314,7 @@ public class Scanner implements WorkStation{
 
 //This is clear violation of Liskov substitution principle
 
-//Solution is seggragate the fat interface into different interfaces
+//Solution is segragate the fat interface into different interfaces
 
 public interface IPrint{
 	public void print();
@@ -342,7 +343,7 @@ public class Fax implements IFax{
 
 ```
 
-Dependecy Inversion
+## Dependecy Inversion
 
 High level modules should not depend on low level moduels, rather both should depend on abstraction
 
