@@ -1,4 +1,5 @@
 Solid principles
+
 Single responsibility Principle
 
 ```java
