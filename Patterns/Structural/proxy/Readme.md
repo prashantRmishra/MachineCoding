@@ -42,8 +42,7 @@ public class ProxyImage implements Image {
     }
     @Override
     public void display(){
-        if(image ==null){// create object of RealImage only if the image reference is null, thus resulting in LazyIntialization 
-            //( i.e. Initializing the object only when it is needed not beforehand)
+        if(image ==null){// create object of RealImage only if the image reference is null, thus resulting in Lazy Initialization ( i.e. Initializing the object only when it is needed not beforehand)
             image = new RealImage(file);
         }
         image.display();

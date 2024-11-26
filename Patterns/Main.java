@@ -1,47 +1,47 @@
 package Patterns;
 
-import java.util.HashMap;
-import java.util.Map;
-abstract class Flyweight{
-    protected char c;
-    public Flyweight(char c){
-        this.c = c;
-    }
-    public char getChar(){
-        return this.c;
-    }
-    public void render(int x, int y){
-        //render the char c at location x and y on the editor screen
-    }
+interface Image{
+    public void display();
 }
-class CharObject extends Flyweight {
-    public CharObject(char c){
-        super(c);
-    }
-}
-class CharacterCache{
-    public static Map<Character,Flyweight> map = new HashMap<>();
+class RealImage implements Image{
+    private String filename;
 
-    public static Flyweight getChar(char c){
-        Flyweight charObject = map.get(c);
-        if(charObject ==null){
-            charObject = new CharObject(c);
-            addCharToCache(charObject);
+    public RealImage(String name){
+        this.filename = name;
+        loadImageFromDisk();
+    }
+    public void loadImageFromDisk(){
+        System.out.println("loading image from disk named: " + filename);
+    }
+
+    @Override
+    public void display(){
+        System.out.println("rendering image " + filename);
+    }
+}
+
+class ProxyImage implements Image{
+    private Image image;
+    private String filename;
+    public ProxyImage(String filename){
+        this.filename = filename;
+    }
+    @Override
+    public void display() {
+        if(image ==null){
+            image = new RealImage(filename); //lazy loading 
         }
-        return charObject;
+        image.display();
     }
-    public static void addCharToCache(Flyweight obj){
-        map.put(obj.getChar(), obj);
-    }
+    
 }
-
-
 
 public class Main {
     public static void main(String[] args) {
-        Flyweight charObj1 = CharacterCache.getChar('a');
-        charObj1.render(12, 32);/// extrinsic property
-        Flyweight charObj2 = CharacterCache.getChar('a');// same as previous one
-        charObj2.render(54, 65);
+        ProxyImage image = new ProxyImage("wallpaper.png");
+        //image is loaded and displayed for the first time
+        image.display();
+        //image will not be loaded again, only display will be called 
+        image.display();
     }
 }
