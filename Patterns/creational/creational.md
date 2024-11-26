@@ -14,7 +14,7 @@ public class Singleton{
 	//private so that it can not be intialized 
 	private Singleton(){}
 
-	public static Singleton getInstnace(){
+	public static Singleton getInstanace(){
 		if(instance ==null){// first null check to insure only one instance is created
 			synchronized(Singleton.class){
 				if(instance ==null){// second null check to insure only one process is allowed to create the instance of Singleton class
@@ -208,6 +208,33 @@ class Main{
 
 ## Abstract factory
 
+```java
+abstract class Button{abstract void render();}
+class MacButton extends Button{public void render(){}}
+class WindowsButton extends Button{public void render(){}}
+interface ButtonFactory{public Button createButton();}
+class MacButtonFactory implements ButtonFactory{
+	public Button createButton(){
+		return new MacButton();
+	}
+}
+class WindowsButtonFactory implements ButtonFactory{
+	public Button createButton(){
+		return new WindowsButton();
+	}
+}
+
+class Main{
+	psvm(s[]){
+		ButtonFactory factory = new MacButtonFactory();
+		Button macButton = factory.createButton();
+		macButton.render();
+		ButtonFactory factory2 = new WindowsButtonFactory();
+		Button windowsButton = factory2.createButton();
+		windowsButton.render();
+	}
+}
+```
 
 
 
