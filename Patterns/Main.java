@@ -1,75 +1,47 @@
 package Patterns;
 
-import java.util.ArrayList;
-import java.util.List;
-
-// Toy abstract class
-abstract class Toy {
-    abstract void create();
-}
-
-// Concrete Toy classes
-class Train extends Toy {
-    @Override
-    public void create() {
-        System.out.println("Creating Train");
+import java.util.HashMap;
+import java.util.Map;
+abstract class Flyweight{
+    protected char c;
+    public Flyweight(char c){
+        this.c = c;
+    }
+    public char getChar(){
+        return this.c;
+    }
+    public void render(int x, int y){
+        //render the char c at location x and y on the editor screen
     }
 }
-
-class Car extends Toy {
-    @Override
-    public void create() {
-        System.out.println("Creating Car");
+class CharObject extends Flyweight {
+    public CharObject(char c){
+        super(c);
     }
 }
+class CharacterCache{
+    public static Map<Character,Flyweight> map = new HashMap<>();
 
-class Bicycle extends Toy {
-    @Override
-    public void create() {
-        System.out.println("Creating Bicycle");
-    }
-}
-
-// Facade class
-class ToyFacade {
-    private List<Toy> toys;
-
-    public ToyFacade() {
-        toys = new ArrayList<>();
-        // Initialize with existing toys, you can add more toys easily without modifying the facade class
-        toys.add(new Train());
-        toys.add(new Car());
-        toys.add(new Bicycle());
-    }
-
-    public void createAllToys() {
-        for (Toy toy : toys) {
-            toy.create();
+    public static Flyweight getChar(char c){
+        Flyweight charObject = map.get(c);
+        if(charObject ==null){
+            charObject = new CharObject(c);
+            addCharToCache(charObject);
         }
+        return charObject;
     }
-
-    public void createToy(Class<? extends Toy> toyClass) {
-        for (Toy toy : toys) {
-            if (toy.getClass().equals(toyClass)) {
-                toy.create();
-                return;
-            }
-        }
-        System.out.println("Toy not found.");
+    public static void addCharToCache(Flyweight obj){
+        map.put(obj.getChar(), obj);
     }
 }
+
+
 
 public class Main {
     public static void main(String[] args) {
-        // Facade instance to handle all toys
-        ToyFacade facade = new ToyFacade();
-        
-        // Create all toys
-        facade.createAllToys();
-        
-        // Create a specific toy
-        facade.createToy(Train.class);
-        facade.createToy(Car.class);
-        facade.createToy(Bicycle.class);
+        Flyweight charObj1 = CharacterCache.getChar('a');
+        charObj1.render(12, 32);/// extrinsic property
+        Flyweight charObj2 = CharacterCache.getChar('a');// same as previous one
+        charObj2.render(54, 65);
     }
 }

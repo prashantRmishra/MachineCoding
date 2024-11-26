@@ -1,6 +1,6 @@
 # Structural Design Patterns
 ## Adapter
-Makes incompatible objects works together
+The Adapter design pattern is used to allow incompatible interfaces to work together by providing a wrapper that converts one interface to another.
 
 ```java
 //enum
@@ -370,8 +370,63 @@ Abstraction hides the internal details of a single class or object, providing a 
 
 ## Proxy
 
-flyweight
+## Flyweight
 
+The Flyweight design pattern is used to reduce memory usage by sharing objects that have the same intrinsic state, while allowing for external state to vary
+
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+abstract class Flyweight {
+    protected char c;
+    public Flyweight(char c) {
+        this.c = c;
+    }
+    public char getChar() {
+        return this.c;
+    }
+    public void render(int x, int y) {
+        System.out.println("Rendering character '" + c + "' at coordinates (" + x + ", " + y + ")");
+    }
+}
+
+class CharObject extends Flyweight {
+    public CharObject(char c) {
+        super(c);
+    }
+}
+
+class CharacterCache {
+    public static Map<Character, Flyweight> map = new HashMap<>();
+
+    public static Flyweight getChar(char c) {
+        Flyweight charObject = map.get(c);
+        if (charObject == null) {
+            charObject = new CharObject(c);
+            addCharToChache(charObject);  // Add the new object to the cache
+        }
+        return charObject;
+    }
+
+    public static void addCharToChache(Flyweight obj) {
+        map.put(obj.getChar(), obj);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Flyweight charObj1 = CharacterCache.getChar('a');
+        charObj1.render(12, 32);  // extrinsic property
+        Flyweight charObj2 = CharacterCache.getChar('a');  // same as previous one
+        charObj2.render(54, 65);
+        
+        // Checking if both references point to the same object (Flyweight reuse)
+        System.out.println(charObj1 == charObj2);  // Should print 'true'
+    }
+}
+```
 
 
 
