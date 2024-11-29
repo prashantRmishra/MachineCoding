@@ -443,6 +443,75 @@ public class Main {
 ```
 
 ## State
+
+```java
+//State pattern is about an object changing its behavior as it transitions between different states in its lifecycle
+//think of the different states of the Thread in its lifecycle
+//Strategy pattern is about choosing between different behaviors (algorithms) at runtime
+//think of various mathematical operations
+
+class Context{
+    private State state;
+    public Context(){}
+    public State getState(){
+        return this.state;
+    }
+    public void setState(State state){
+        this.state = state;
+    }
+}
+abstract class State{
+    protected Context context;
+    public State(Context context){
+        this.context = context;
+    }
+    abstract public void doAction();
+    @Override
+    public String toString(){
+        return this.getClass().getSimpleName();
+    }
+}
+class StartState extends State{
+    public StartState(Context context){
+        super(context);
+    }
+    @Override
+    public void doAction(){
+        System.out.println("System is starting...");
+        context.setState(this);
+    }
+}
+
+class EndState extends State{
+    public EndState(Context context){
+        super(context);
+    }
+    @Override
+    public void doAction(){
+        System.out.println("System has ended.");
+        context.setState(this);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Context context = new Context();
+        State startState = new StartState(context);
+        startState.doAction();
+        System.out.println(context.getState());
+        State endState = new EndState(context);
+        endState.doAction();
+        System.out.println(context.getState());
+    }
+}
+
+/*
+System is starting...
+StartState
+System has ended.
+EndState
+*/
+```
 ## template
 
 
@@ -600,4 +669,14 @@ sandeep received: Hi prashant
 
 ```
 
+## Difference between Strategy pattern and State pattern 
 
+| Feature               | **Strategy Pattern**                                   | **State Pattern**                                   |
+|-----------------------|--------------------------------------------------------|-----------------------------------------------------|
+| **Intent**            | Select and change between different behaviors.         | Change behavior based on internal state transitions. |
+| **Behavior Change**   | Explicitly chosen by the context.                      | Automatically changes when the object’s state changes.|
+| **State Transitions** | Not concerned with transitions, just selecting strategies. | Manages internal state transitions.                 |
+| **Example**           | Payment system with multiple payment methods.          | Document with different states like Draft, Approved. |
+| **Key Focus**         | Encapsulate algorithms.                               | Encapsulate states and transitions.                 |
+
+In summary, the Strategy pattern is about choosing between different behaviors (algorithms) at runtime, while the State pattern is about an object changing its behavior as it transitions between different states in its lifecycle.
