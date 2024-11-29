@@ -1,94 +1,73 @@
 package Patterns.Behavioral;
 
-interface Logger{
-    public void log(String msg, int level);
-}
-class FatalLogger implements Logger{
-    private final int level = 1;
-    private Logger nextLogger;
-    public FatalLogger(Logger logger){
-        this.nextLogger = logger;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Subject{
+    private String state;
+    public Subject(String s){
+        this.state = s;
     }
-    @Override
-    public void log(String msg,int level){
-        if(this.level >=level){
-            System.out.println(this.getClass().toString()+" "+ msg);
-        }
-        else{
-            nextLogger.log(msg, level);
-        }
+
+    public String getState(){
+        return this.state;
     }
-}
-class ErrorLogger implements Logger{
-    private final int level = 2;
-    private Logger nextLogger;
-    public ErrorLogger(Logger logger){
-        this.nextLogger = logger;
+    public void updateState(String s){
+        this.state = s;
     }
-    @Override
-    public void log(String msg,int level){
-        if(this.level >=level){
-            System.out.println(this.getClass().toString()+" "+ msg);
-        }
-        else{
-            nextLogger.log(msg, level);
-        }
+    public Memento saveStateToMemento(){
+        return new Memento(state);
+    }
+    public void updateStateFromMemento(Memento m){
+        this.state = m.getState();
     }
 }
-class InfoLogger implements Logger{
-    private final int level = 3;
-    private Logger nextLogger;
-    public InfoLogger(Logger logger){
-        this.nextLogger = logger;
+class Memento{
+    private final String state;
+    public Memento(String s){
+        this.state = s;
     }
-    @Override
-    public void log(String msg,int level){
-        if(this.level >=level){
-            System.out.println(this.getClass().toString()+" "+ msg);
-        }
-        else{
-            nextLogger.log(msg, level);
-        }
+    public String getState(){
+        return this.state;
     }
 }
-class DebugLogger implements Logger{
-    private final int level = 4;
-    private Logger nextLogger;
-    public DebugLogger(Logger logger){
-        this.nextLogger = logger;
+class SnapshotManager{
+    private List<Memento> mementos;
+    public SnapshotManager(){
+        this.mementos = new ArrayList<>();
     }
-    @Override
-    public void log(String msg,int level){
-        if(this.level >=level){
-            System.out.println(this.getClass().toString()+" "+ msg);
+
+    public void save(Memento m){
+        mementos.add(m);
+    }
+
+    public Memento getMemento(int index){
+        try {
+            return mementos.get(index);
+        } catch (Exception e) {
+           System.out.println("given snapshot index does not exist");
         }
-        else{
-            nextLogger.log(msg, level);
-        }
+        return null;
     }
 }
-class GeneralLogger implements Logger{
-    public GeneralLogger(){
-    }
-    @Override
-    public void log(String msg,int level){
-       System.out.println(this.getClass().toString()+" "+ msg);
-    }
-}
+
 
 public class Main {
     public static void main(String[] args) {
-        //FATAL> ERROR > INFO > DEBUG
-        Logger generalLogger = new GeneralLogger();// to  handle all sorts of logging messages of all the level not supported by other loggers
-        Logger debugLogger = new DebugLogger(generalLogger);
-        Logger infoLogger = new InfoLogger(debugLogger);
-        Logger errorLogger = new ErrorLogger(infoLogger);
-        Logger logger = new FatalLogger(errorLogger);
+        Subject subject = new Subject("state 1");
+        SnapshotManager manager = new SnapshotManager();
+        System.out.println("current state is "+ subject.getState());//state 1
+        subject.updateState("state 2");
+        manager.save(subject.saveStateToMemento());//state 2 of subject is saved
 
-        logger.log("This is a fatal message", 1);
-        logger.log("This is a error message", 2);
-        logger.log("This is a info message", 3);
-        logger.log("This is a debug message", 4);
-        logger.log("This is some other log message", 5);
+        subject.updateState("state 3");
+        System.out.println("current state is "+subject.getState()); //state 3
+
+        subject.updateStateFromMemento(manager.getMemento(0));// state updated to state 2
+        System.out.println("current state is "+ subject.getState());
+
+
+
     }
 }

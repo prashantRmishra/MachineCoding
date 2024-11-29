@@ -364,6 +364,240 @@ public class Main {
 ```
 
 ## Memento
+The Memento pattern captures and restores an object's state without violating encapsulation, enabling undo or rollback functionality
+
+```java
+package Patterns.Behavioral;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Subject{
+    private String state;
+    public Subject(String s){
+        this.state = s;
+    }
+
+    public String getState(){
+        return this.state;
+    }
+    public void updateState(String s){
+        this.state = s;
+    }
+    public Memento saveStateToMemento(){
+        return new Memento(state);
+    }
+    public void updateStateFromMemento(Memento m){
+        this.state = m.getState();
+    }
+}
+class Memento{
+    private final String state;
+    public Memento(String s){
+        this.state = s;
+    }
+    public String getState(){
+        return this.state;
+    }
+}
+class SnapshotManager{
+    private List<Memento> mementos;
+    public SnapshotManager(){
+        this.mementos = new ArrayList<>();
+    }
+
+    public void save(Memento m){
+        mementos.add(m);
+    }
+
+    public Memento getMemento(int index){
+        try {
+            return mementos.get(index);
+        } catch (Exception e) {
+           System.out.println("given snapshot index does not exist");
+        }
+        return null;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Subject("state 1");
+        SnapshotManager manager = new SnapshotManager();
+        System.out.println("current state is "+ subject.getState());//state 1
+        subject.updateState("state 2");
+        manager.save(subject.saveStateToMemento());//state 2 of subject is saved
+
+        subject.updateState("state 3");
+        System.out.println("current state is "+subject.getState()); //state 3
+
+        subject.updateStateFromMemento(manager.getMemento(0));// state updated to state 2
+        System.out.println("current state is "+ subject.getState());
+
+
+
+    }
+}
+```
+
 ## State
 ## template
+
+
+The Template Method pattern defines the framework of an algorithm in a base class, allowing subclasses to provide specific implementations for certain steps while preserving the overall structure
+
+```java
+
+//template is a behavioral design pattern that defines the templates for method execution
+//the methods should be executed in the same order as specified by the template, the methods can be
+//overridden as per the use case
+abstract class Template {
+    public abstract void initGame();
+    public abstract void startGame();
+    public abstract void endGame();
+
+    public final void play() { // final is important to insure this can not be overridden and used as is
+        initGame();
+        startGame();
+        endGame();
+    }
+}
+
+class CricketTemplate extends Template {
+    @Override
+    public void initGame() {
+        System.out.println("Cricket is Initialized");
+    }
+    @Override
+    public void startGame() {
+        System.out.println("Cricket game has been started");
+    }
+    @Override
+    public void endGame() {
+        System.out.println("Cricket game has ended");
+    }
+}
+
+class FootballTemplate extends Template {
+    @Override
+    public void initGame() {
+        System.out.println("Football is Initialized");
+    }
+    @Override
+    public void startGame() {
+        System.out.println("Football game has been started");
+    }
+    @Override
+    public void endGame() {
+        System.out.println("Football game has ended");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Template cricket = new CricketTemplate();
+        cricket.play();
+
+        System.out.println();
+
+        Template football = new FootballTemplate();
+        football.play();
+    }
+}
+
+```
+
 ## Mediator
+The Mediator pattern centralizes communication between multiple objects, promoting loose coupling by having objects interact through a mediator rather than directly with each other
+
+```java
+
+//Mediator promotes loose coupling, it insures that if two classes communicate with each other they don't have to have a hard dependency on each other
+//this is achieved by using a third object that facilitate the two other objects to communicate with each other
+
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class User{
+
+    protected String name;
+    protected ChatRoom room;
+
+    public User(ChatRoom room,String name){
+        this.room = room;
+        this.name = name;
+        room.addUser(this);
+    }
+
+    abstract public void send(String m);
+    abstract public void receive(String m);
+}
+
+class MobileAppUser extends User{
+
+    public MobileAppUser(ChatRoom c, String name){
+        super(c,name);
+    }
+    @Override
+    public void send(String m){
+        System.out.println(this.name +" sent: "+ m);
+        room.send(this, m);
+    }
+    @Override
+    public void receive(String m){
+        System.out.println(name+" received: "+m);
+    }
+}
+
+class ChatRoom{
+    List<User> users;
+    public ChatRoom(){
+        users = new ArrayList<>();
+    }
+    public void addUser(User u){
+        users.add(u);
+    }
+    public void removeUser(User u){
+        users.remove(u);
+    }
+    public void send(User u,String m){
+        for(User user : users){
+            if(user!=u){
+                user.receive(m);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ChatRoom room = new ChatRoom();
+        User user1  = new MobileAppUser(room, "prashant");
+        User user2 = new MobileAppUser(room, "sandeep");
+        User user3 = new MobileAppUser(room, "ajay");
+        user1.send("Hi Ajay and Sandeep");
+        user2.send("Hi Prashant");
+        user3.send("Hi prashant");
+    }
+}
+
+/*
+ *output:
+ *  
+prashant sent: Hi Ajay and Sandeep
+sandeep received: Hi Ajay and Sandeep
+ajay received: Hi Ajay and Sandeep
+sandeep sent: Hi Prashant
+prashant received: Hi Prashant
+ajay received: Hi Prashant
+ajay sent: Hi prashant
+prashant received: Hi prashant
+sandeep received: Hi prashant
+
+*/
+
+```
+
+
