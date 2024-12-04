@@ -1,3 +1,4 @@
+package BookMyShow;
 public class User {
     private int userId;
     private String name;

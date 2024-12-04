@@ -1,3 +1,4 @@
+package atm;
 public enum ATMMessage {
     WELCOME("Welcome to the ATM, please insert your card to begin"),
     AUTH_SUCCESS("Authentication successful"),

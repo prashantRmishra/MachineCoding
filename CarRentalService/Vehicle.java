@@ -1,3 +1,5 @@
+package CarRentalService;
+
 public class Vehicle {
     private String vehicleNumber;
     private VehicleType type;

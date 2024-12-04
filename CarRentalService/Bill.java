@@ -1,3 +1,5 @@
+package CarRentalService;
+
 public class Bill {
     private int billId;
     private Reservation reservation;

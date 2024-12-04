@@ -1,3 +1,4 @@
+package BookMyShow;
 public class Ticket {
     private int ticketId;
     private Event event;

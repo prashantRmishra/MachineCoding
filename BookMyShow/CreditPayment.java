@@ -1,3 +1,4 @@
+package BookMyShow;
 public class CreditPayment extends Payment {
     public CreditPayment(){
     }
