@@ -3,6 +3,7 @@ package MultiLevelCache;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class LevelCache  implements Cache{
     private final int LEVEL;
@@ -10,6 +11,7 @@ public class LevelCache  implements Cache{
     private int readTime;
     private int writeTime;
     private Map<String,String> map;
+    private ReentrantLock lock = new ReentrantLock();
     public LevelCache(int level,int capacity,int readTime, int writeTime){
         this.LEVEL = level;
         this.capacity = capacity;
@@ -35,29 +37,47 @@ public class LevelCache  implements Cache{
     }
     @Override
     public int getUsage(){
-        return map.size();// usage is nothing but how much of the map size has been utilized compared to the original capacity
+        lock.lock();
+        try {
+            return map.size();// usage is nothing but how much of the map size has been utilized compared to the original capacity
+        } finally{
+            lock.unlock();
+        }
+       
     }
 
     // simple LRU cache replacement policy has been employed with most recently used at the end and least recently used at the 
     //front of the doubly linked list
     @Override
     public String get(String key){
-        String value = map.get(key);
-        if(value ==null) return null;
-        //put it back in the end to make it most recently used entry in the cache
-        map.remove(key);
-        map.put(key, value);
-        return value;
+        lock.lock();
+        try{
+            String value = map.get(key);
+            if(value ==null) return null;
+            //put it back in the end to make it most recently used entry in the cache
+            map.remove(key);
+            map.put(key, value);
+            return value;
+        }
+        finally{
+            lock.unlock();
+        }
     }
     @Override
     public void put(String key,String value){
-        if(map.size()==capacity){
-            String k =  map.entrySet().iterator().next().getKey();
-            map.remove(k);// remove the least recently used entry from the map(present at the front)
+        lock.lock();
+        try{
+            if(map.size()==capacity){
+                String k =  map.entrySet().iterator().next().getKey();
+                map.remove(k);// remove the least recently used entry from the map(present at the front)
+            }
+            else if(map.containsKey(key)){
+                map.remove(key);//remove it and put it back in the end making it most recently used value
+            }
+            map.put(key, value);//add new entry in them cache
         }
-        else if(map.containsKey(key)){
-            map.remove(key);//remove it and put it back in the end making it most recently used value
+        finally{
+            lock.unlock();
         }
-        map.put(key, value);//add new entry in them cache
     }
 }
