@@ -1,4 +1,4 @@
-
+package Patterns.Structural.Adapter.example2;
 public class Mp3MediaPlayer implements MediaPlayer {
     //dependency
     MediaAdapter mediaAdapter;

@@ -1,4 +1,4 @@
-
+package Patterns.Structural.Adapter.example2;
 public class Mp4MediaPlayer implements AdvanceMediaPlayer {
     @Override
     public void playMp4(String fileName){

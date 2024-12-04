@@ -1,3 +1,5 @@
+package Patterns.Structural.Adapter.example2;
+
 
 /**
  * Interface capable of playing mp4 and vlc files both

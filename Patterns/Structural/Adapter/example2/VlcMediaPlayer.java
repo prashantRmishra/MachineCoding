@@ -1,4 +1,4 @@
-
+package Patterns.Structural.Adapter.example2;
 public class VlcMediaPlayer implements AdvanceMediaPlayer {
 
     //note: this is clear violation of ISP (as this client is being forced to override a method it does use)

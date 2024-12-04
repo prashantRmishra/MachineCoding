@@ -1,4 +1,4 @@
-
+package Patterns.Structural.Adapter.example2;
 public class MediaPlayerMain{
     public static void main(String args[]){
         // below class Mp3MediaPlayer can play mp3 player (in built) but can also play mp4 and vlc because of 
