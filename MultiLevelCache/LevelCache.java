@@ -1,20 +1,46 @@
 package MultiLevelCache;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LevelCache {
+public class LevelCache  implements Cache{
     private final int LEVEL;
     private final int capacity;
+    private int readTime;
+    private int writeTime;
     private Map<String,String> map;
-    public LevelCache(int level,int capacity){
+    public LevelCache(int level,int capacity,int readTime, int writeTime){
         this.LEVEL = level;
         this.capacity = capacity;
         map = new LinkedHashMap<>(); // for ordered entry in the map
+        this.readTime = readTime;
+        this.writeTime = writeTime;
     }
+    @Override
     public int getLevel(){
         return this.LEVEL;
     }
+    @Override
+    public  int getReadTime(){
+        return this.readTime;
+    }
+    @Override
+    public int getWriteTime(){
+        return this.writeTime;
+    }
+    @Override
+    public int getCapacity(){
+        return this.capacity;
+    }
+    @Override
+    public int getUsage(){
+        return map.size();// usage is nothing but how much of the map size has been utilized compared to the original capacity
+    }
+
+    // simple LRU cache replacement policy has been employed with most recently used at the end and least recently used at the 
+    //front of the doubly linked list
+    @Override
     public String get(String key){
         String value = map.get(key);
         if(value ==null) return null;
@@ -23,6 +49,7 @@ public class LevelCache {
         map.put(key, value);
         return value;
     }
+    @Override
     public void put(String key,String value){
         if(map.size()==capacity){
             String k =  map.entrySet().iterator().next().getKey();
