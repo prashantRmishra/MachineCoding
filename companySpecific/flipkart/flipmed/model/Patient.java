@@ -1,4 +1,4 @@
-package companySpecific.flipkart.model;
+package companySpecific.flipkart.flipmed.model;
 
 
 public class Patient extends User {

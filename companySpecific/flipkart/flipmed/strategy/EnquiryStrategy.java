@@ -1,10 +1,9 @@
-package companySpecific.flipkart.strategy;
+package companySpecific.flipkart.flipmed.strategy;
 
 import java.util.List;
 import java.util.Set;
 
-
-import companySpecific.flipkart.model.Doctor;
+import companySpecific.flipkart.flipmed.model.Doctor;
 
 public interface EnquiryStrategy {
     public List<Doctor> getDoctors(Set<Doctor> doctors,String search);

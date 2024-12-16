@@ -110,3 +110,4 @@ o: Booking confirmed for Booking id: 5710 <br />
 i: showAppointmentsBooked(PatientF) <br />
 o: Booking id: 5280, Dr Curious 9:30 <br />
 o: Booking id: 5587 , Dr Daring 11:30 <br />
+

@@ -1,10 +1,10 @@
-package companySpecific.flipkart.strategy;
+package companySpecific.flipkart.flipmed.strategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import companySpecific.flipkart.model.Doctor;
+import companySpecific.flipkart.flipmed.model.Doctor;
 
 public class SpecialityStrategy implements EnquiryStrategy {
 

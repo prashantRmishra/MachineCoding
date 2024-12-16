@@ -1,9 +1,9 @@
-package companySpecific.flipkart.model;
+package companySpecific.flipkart.flipmed.model;
 
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import companySpecific.flipkart.Utility;
+import companySpecific.flipkart.flipmed.Utility;
 
 public class Appointment {
     private int id;
@@ -15,8 +15,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment [id=" + id + ", slot=" + slot + ", patient=" + patient + ", doctor=" + doctor
-                + ", isWaitlist=" + isWaitlist + "]";
+        return "\n[slot=" + slot + ",doc=" + doctor.getName()+"]\n";
     }
 
     public Appointment(Slot s, Patient p, Doctor d){
@@ -44,6 +43,9 @@ public class Appointment {
     }
     public void setWaitlist(){
         this.isWaitlist.set(true);
+    }
+    public void freeWaitList(){
+        this.isWaitlist.set(false);
     }
     public boolean isWaitlist(){
         return this.isWaitlist.get();

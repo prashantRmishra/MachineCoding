@@ -1,14 +1,13 @@
-package companySpecific.flipkart.model;
+package companySpecific.flipkart.flipmed.model;
 
 
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import companySpecific.flipkart.Speciality;
-
 public class Doctor extends User {
-    Set<Slot> slots;
+    private Set<Slot> slots;
     @Override
     public String toString() {
         List<Slot> l = getAvailableSlots();
@@ -33,6 +32,12 @@ public class Doctor extends User {
 
     public List<Slot> getAvailableSlots(){
         return slots.stream().filter(slot-> !slot.isBooked()).toList();
+    }
+    public Slot getSlot(LocalTime startTime){
+        for(Slot s : getSlots()){
+            if(s.getStartTime().equals(startTime)) return s;
+        }
+        return null;
     }
 
 }

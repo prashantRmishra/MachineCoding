@@ -1,4 +1,4 @@
-package companySpecific.flipkart.model;
+package companySpecific.flipkart.flipmed.model;
 
 import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -6,11 +6,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Slot {
     private LocalTime startTime;
     private LocalTime endTime;
+    private AtomicBoolean isBooked;
     @Override
     public String toString() {
         return "Slot [" + startTime + "-" + endTime + "]";
     }
-    private AtomicBoolean isBooked;
+    
     public Slot(LocalTime s, LocalTime e){
         this.startTime = s;
         this.endTime =  e;
