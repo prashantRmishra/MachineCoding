@@ -2,7 +2,7 @@
 # [FlipMed Problem Statement](problemStatement.md)
 
 ## UML Diagram
-![Class Diagram](flipmed/images/classDiagram.png)
+![Class Diagram](./images/classDiagram.png)
 # FlipMed Appointment Management System
 
 ## Overview
