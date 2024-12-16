@@ -1,9 +1,8 @@
 
-# [FlipMed Problem Statement](problemStatement.md)
+# [FlipMed Appointment Management System Problem Statement](problemStatement.md)
 
 ## UML Diagram
 ![Class Diagram](./images/classDiagram.png)
-# FlipMed Appointment Management System
 
 ## Overview
 FlipMed is a Java-based medical appointment management system that allows patients to book appointments with doctors, manage slot availability, and implement a waitlist mechanism.
