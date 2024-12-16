@@ -1,5 +1,5 @@
 package BookMyShow;
-public class User {
+public abstract class User {
     private int userId;
     private String name;
 
