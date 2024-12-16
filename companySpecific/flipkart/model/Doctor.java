@@ -11,8 +11,8 @@ public class Doctor extends User {
     Set<Slot> slots;
     @Override
     public String toString() {
-        
-        return "Dr."+getName()+" [slots=" +getAvailableSlots() + "]";
+        List<Slot> l = getAvailableSlots();
+        return "Dr."+getName()+" [slots=" +(l.isEmpty() ? "No slots available":l) + "]";
     }
     private Speciality speciality;
     public Doctor(String name, UserType type,Speciality speciality){

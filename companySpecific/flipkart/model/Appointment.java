@@ -1,21 +1,30 @@
 package companySpecific.flipkart.model;
 
-import java.time.LocalTime;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import companySpecific.flipkart.Utility;
 
 public class Appointment {
     private int id;
     private Slot slot;
-    private String patientName;
-    private String doctorName;
+    private Patient patient;
+    private Doctor doctor;
+    private AtomicBoolean isWaitlist;
 
 
-    public Appointment(Slot s, String p, String d){
-        this.patientName = p;
-        this.doctorName = d;
+    @Override
+    public String toString() {
+        return "Appointment [id=" + id + ", slot=" + slot + ", patient=" + patient + ", doctor=" + doctor
+                + ", isWaitlist=" + isWaitlist + "]";
+    }
+
+    public Appointment(Slot s, Patient p, Doctor d){
+        this.patient = p;
+        this.doctor = d;
         this.slot  =s;
         this.id = Utility.getUniqueId();
+        isWaitlist = new AtomicBoolean(false);
     }
 
     public int getId() {
@@ -26,11 +35,17 @@ public class Appointment {
         return slot;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public void setWaitlist(){
+        this.isWaitlist.set(true);
+    }
+    public boolean isWaitlist(){
+        return this.isWaitlist.get();
     }
 }

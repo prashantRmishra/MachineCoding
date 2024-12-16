@@ -2,8 +2,11 @@ package companySpecific.flipkart.manager;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 import companySpecific.flipkart.model.Appointment;
@@ -13,49 +16,52 @@ import companySpecific.flipkart.model.Slot;
 import companySpecific.flipkart.model.User;
 
 public class AppointmentManager {
-    private Map<User,List<Appointment>> userAppointments;
+    private Map<Integer,Appointment> appointments;
+    public AppointmentManager(){
+        appointments = new HashMap<>();
+    }
 
-    public List<Appointment> getAppointment(User u){
-        List<Appointment> appointments = userAppointments.get(u);
-        if(appointments ==null) System.err.println("no appointment found");
-        return appointments;
+    public List<Appointment> getUserAppointments(User u){
+        System.out.println(u);
+        return appointments.values().stream().filter(a->{
+             
+            return a.getDoctor().getName().equals(u.getName()) || a.getPatient().getName().equals(u.getName());
+        }).toList();
     }
+
     public synchronized int createAppointment(Patient p, Doctor d, Slot slot){
-        //check if the given slot is free for the doctor
-        if(slotAvailable(d.getSlots(),slot.getStartTime())){
-            Appointment appointment  = new Appointment(slot, p.getName(), d.getName());
-            //add appointment for both patient and doctor
-            addAppointment(d, appointment);
-            addAppointment(p, appointment);
-            return appointment.getId();
-        }
-        return -1;
+        //book the slot
+        slot.bookSlot();
+        //create appointment
+        Appointment appointment  = new Appointment(slot, p, d);
+        //add store appointmentDetails
+        addAppointment(appointment);
+        //return appointment Id
+        return appointment.getId();
+        
     }
-    public boolean slotAvailable(Set<Slot> slots,LocalTime startTime){
-        for(Slot s : slots){
-            if(s.getStartTime().equals(startTime)) return !s.isBooked();
-        }
-        return false;
-    }
-    public void addAppointment(User u,Appointment appointment){
-        List<Appointment> appointments = userAppointments.getOrDefault(u, new ArrayList<>());
-        appointments.add(appointment);
+    public synchronized void addAppointment(Appointment appointment){
         //update the user appointments
-        userAppointments.put(u, appointments);
+        appointments.put(appointment.getId(), appointment);
     }
-    public boolean removeAppointment(User u, Appointment appointment){
-        List<Appointment> appointments = userAppointments.get(u);
-        if(appointment==null) {
-            System.err.println("No appointment is present for the given user" + u.getName());
+    public synchronized boolean removeAppointment(int id){
+        Appointment appointment =null;
+        if(!appointments.containsKey(id)){
+            System.out.println("given appointment does not exists!!");
             return false;
         }
-        int appointmentIndex = appointments.indexOf(appointment);
-        if(appointmentIndex==-1){
-            System.err.println("This appointment does not exists!!"+ appointment.getId());
-            return false;
-        }
-        appointment.getSlot().freeSlot();
-        appointments.remove(appointment);
+        appointment = appointments.remove(id);
+        if(!appointment.isWaitlist())
+            appointment.getSlot().freeSlot();
+        System.out.println("Booking cancelled");
         return true;
+    }
+
+    public synchronized int addWaitlingQueue(Patient p, Doctor dr, Slot slot) {
+        //create appointment
+        Appointment appointment  = new Appointment(slot, p, dr);
+        appointment.setWaitlist();
+        appointments.put(appointment.getId(), appointment);
+        return appointment.getId();
     }
 }

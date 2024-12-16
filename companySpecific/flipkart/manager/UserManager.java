@@ -30,23 +30,34 @@ public class UserManager {
         this.manager = manager;
         this.strategy = strategy;
     }
-
-    public void createPatient(Patient p){
+    public List<Appointment> getAppointments(User u){
+        return manager.getUserAppointments(u);
+    }
+    public synchronized void addPatient(Patient p){
         this.patients.add(p);
         System.out.println(p.getName() +" registered successfully!!");
     }
-    public void createDoctor(Doctor p){
+    public synchronized void addDoctor(Doctor p){
         this.doctors.add(p);
         System.out.println("welcome doctor "+ p.getName());
     }
-    public synchronized void addAppointment(User u, Appointment appointment){
-        manager.addAppointment(u, appointment);
+    public String addAppointment(Patient p, Doctor dr, String startTime){
+        Slot slot  = getSlot(dr, getTime(startTime));
+        if(slot==null){
+            return "Invalid slot";
+        }
+        else if(slot.isBooked()){
+            System.out.println("slot is not available, Patient will be added in the wait list");
+            return "Added to wait list:"+manager.addWaitlingQueue(p,dr,slot);
+
+        }
+        return "Booked.Booking id:"+ manager.createAppointment(p, dr,slot);
     }
-    public synchronized void removeAppointment(User u, Appointment appointment){
-        manager.removeAppointment(u, appointment);
+    public void removeAppointment(int id){
+        manager.removeAppointment(id);
     }
 
-    public void markDocAvailability(Doctor d1, String slotRequest) {
+    public synchronized void markDocAvailability(Doctor d1, String slotRequest) {
         String slots[] = slotRequest.split(",");
         List<Slot> slotList = new ArrayList<>();
         for(String slot  :slots){
@@ -76,5 +87,12 @@ public class UserManager {
        for(Doctor d : strategy.getDoctors(doctors, speciality.toString())){
         System.out.println(d);
        }
+    }
+
+    public Slot getSlot(Doctor d, LocalTime startTime){
+        for(Slot s : d.getSlots()){
+            if(s.getStartTime().equals(startTime)) return s;
+        }
+        return null;
     }
 }
