@@ -9,7 +9,6 @@ public class Driver {
         ParkingLotController controller =new ParkingLotController();
         ///add a floor in the parking building
         controller.addFloor();
-
         for(int i =0;i<39;i++){
             controller.parkVehicle(new MotorCycle(i, VehicleType.bike));
         }
