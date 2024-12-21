@@ -27,14 +27,14 @@ Find total rides offered/taken by all users.
 print_ride_stats()
 Bonus Question:
 
-If the user’s origin/destinations are not available directly but it’s possible via multiple rides, then the application should output multiple rides. (Example: for input: Bangalore to Mumbai, the output can be Bangalore to Goa and Goa to Mumbai) 
+If the user’s origin/destinations are not available directly but it’s possible via multiple rides, then the application should output multiple rides. (Example: for input: Bangalore to Mumbai, the output can be Bangalore to Goa and Goa to Mumbai)
 Other Notes:
 
-Write a driver class for demo purposes. Which will execute all the commands in one place in the code and test cases. 
+Write a driver class for demo purposes. Which will execute all the commands in one place in the code and test cases.
 Do not use any database or NoSQL store, use in-memory data-structure for now.  
-Do not create any UI for the application. 
+Do not create any UI for the application.
 Please prioritize code compilation, execution, and completion.  
-Work on the expected output first and then add good-to-have features of your own. 
+Work on the expected output first and then add good-to-have features of your own.
 Expectations:
 
 Make sure that you have a working and demonstrable code.
