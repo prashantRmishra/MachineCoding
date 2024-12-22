@@ -1,16 +1,16 @@
 package companySpecific.flipkart.ride_sharing_app;
 
+import java.util.Comparator;
+
 import companySpecific.flipkart.ride_sharing_app.manager.RideSharingManager;
 import companySpecific.flipkart.ride_sharing_app.manager.UserManager;
 import companySpecific.flipkart.ride_sharing_app.model.RegisterRide;
+import companySpecific.flipkart.ride_sharing_app.model.Ride;
 import companySpecific.flipkart.ride_sharing_app.model.RideRequest;
 import companySpecific.flipkart.ride_sharing_app.model.RideUser;
 import companySpecific.flipkart.ride_sharing_app.model.RideVehicle;
 import companySpecific.flipkart.ride_sharing_app.model.RideVehicleType;
-import companySpecific.flipkart.ride_sharing_app.ride_strategy.ActivaRideStrategy;
-import companySpecific.flipkart.ride_sharing_app.ride_strategy.BalenoRideStrategy;
-import companySpecific.flipkart.ride_sharing_app.ride_strategy.PoloRideStrategy;
-import companySpecific.flipkart.ride_sharing_app.ride_strategy.RideByMostVacantStrategy;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.RideSharingStrategy;
 
 public class Driver {
     public static void main(String[] args) {
@@ -60,12 +60,12 @@ public class Driver {
         controller.createRide(regsiterRideRohan2);
 
         //requesting rides
-        RideRequest rideRequestNandini =new RideRequest(nandini, "bangalore", "mysore", 1, new RideByMostVacantStrategy());
-        RideRequest rideRequestGaurav = new RideRequest(gaurav, "bangalore", "mysore", 1, new ActivaRideStrategy());
-        RideRequest rideRequestShashank = new RideRequest(shashank, "mumbai", "bangalore", 1, new RideByMostVacantStrategy());
-        RideRequest rideRequestRohan    = new RideRequest(rohan, "hyderabad", "bangalore", 1, new BalenoRideStrategy());
+        RideRequest rideRequestNandini =new RideRequest(nandini, "bangalore", "mysore", 1, new RideSharingStrategy(ride-> ride.getSeatAVailability()>=1,Comparator.comparingInt(Ride::getSeatAVailability).reversed()));
+        RideRequest rideRequestGaurav = new RideRequest(gaurav, "bangalore", "mysore", 1, new RideSharingStrategy(ride-> ride.getVehicle().getVehicleModel().equals("activa"),null));
+        RideRequest rideRequestShashank = new RideRequest(shashank, "mumbai", "bangalore", 1, new RideSharingStrategy(ride-> ride.getSeatAVailability()>=1,Comparator.comparingInt(Ride::getSeatAVailability).reversed()));
+        RideRequest rideRequestRohan    = new RideRequest(rohan, "hyderabad", "bangalore", 1, new RideSharingStrategy(ride-> ride.getVehicle().getVehicleModel().equals("baleno"),null));
 
-        RideRequest rideRequestShashank2 = new RideRequest(shashank, "hyderabad", "bangalore", 1, new PoloRideStrategy());
+        RideRequest rideRequestShashank2 = new RideRequest(shashank, "hyderabad", "bangalore", 1,new RideSharingStrategy(ride-> ride.getVehicle().getVehicleModel().equals("polo"),null));
 
         controller.requestRide(rideRequestNandini);
         controller.requestRide(rideRequestGaurav);
