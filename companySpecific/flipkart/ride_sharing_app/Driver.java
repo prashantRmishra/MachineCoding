@@ -1,10 +1,16 @@
 package companySpecific.flipkart.ride_sharing_app;
 
+import companySpecific.flipkart.ride_sharing_app.manager.RideSharingManager;
+import companySpecific.flipkart.ride_sharing_app.manager.UserManager;
 import companySpecific.flipkart.ride_sharing_app.model.RegisterRide;
 import companySpecific.flipkart.ride_sharing_app.model.RideRequest;
 import companySpecific.flipkart.ride_sharing_app.model.RideUser;
 import companySpecific.flipkart.ride_sharing_app.model.RideVehicle;
 import companySpecific.flipkart.ride_sharing_app.model.RideVehicleType;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.ActivaRideStrategy;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.BalenoRideStrategy;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.PoloRideStrategy;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.RideByMostVacantStrategy;
 
 public class Driver {
     public static void main(String[] args) {
@@ -54,12 +60,12 @@ public class Driver {
         controller.createRide(regsiterRideRohan2);
 
         //requesting rides
-        RideRequest rideRequestNandini =new RideRequest(nandini, "bangalore", "mysore", 1, null);
-        RideRequest rideRequestGaurav = new RideRequest(gaurav, "bangalore", "mysore", 1, null);
-        RideRequest rideRequestShashank = new RideRequest(shashank, "mumbai", "bangalore", 1, null);
-        RideRequest rideRequestRohan    = new RideRequest(rohan, "hyderabad", "bangalore", 1, null);
+        RideRequest rideRequestNandini =new RideRequest(nandini, "bangalore", "mysore", 1, new RideByMostVacantStrategy());
+        RideRequest rideRequestGaurav = new RideRequest(gaurav, "bangalore", "mysore", 1, new ActivaRideStrategy());
+        RideRequest rideRequestShashank = new RideRequest(shashank, "mumbai", "bangalore", 1, new RideByMostVacantStrategy());
+        RideRequest rideRequestRohan    = new RideRequest(rohan, "hyderabad", "bangalore", 1, new BalenoRideStrategy());
 
-        RideRequest rideRequestShashank2 = new RideRequest(shashank, "hyderabad", "bangalore", 1, null);
+        RideRequest rideRequestShashank2 = new RideRequest(shashank, "hyderabad", "bangalore", 1, new PoloRideStrategy());
 
         controller.requestRide(rideRequestNandini);
         controller.requestRide(rideRequestGaurav);

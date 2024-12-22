@@ -1,4 +1,4 @@
-package companySpecific.flipkart.ride_sharing_app;
+package companySpecific.flipkart.ride_sharing_app.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import companySpecific.flipkart.ride_sharing_app.model.RegisterRide;
 import companySpecific.flipkart.ride_sharing_app.model.Ride;
 import companySpecific.flipkart.ride_sharing_app.model.RideRequest;
 import companySpecific.flipkart.ride_sharing_app.model.RideStatus;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.RideStrategy;
 
 public class RideSharingManager {
     private Map<String,List<Ride>> allUserRides;
@@ -43,31 +44,28 @@ public class RideSharingManager {
 
     public void rideRequest(RideRequest request){
         List<Ride> rideList = new ArrayList<>();
-        List<Ride> availableRidesBasedOnStrategy = findRides(request.getStrategy(),allUserRides, request);
-                for(Map.Entry<String,List<Ride>> userRides : allUserRides.entrySet()){
-                    for(Ride ride : userRides.getValue()){
-                        if(!request.getRequester().equals(ride.getOwner()) && !ride.getRideStatus().equals(RideStatus.COMPLETED) && ride.getSeatAVailability()>=1  && ride.getSource().equals(request.getSource()) && ride.getDestination().equals(request.getDestination())){
-                            // the user of the request has requested for one ride, hence update the requested stats
-                            userManager.updateTakenStats(request.getRequester().getUserName(), 1);
-                            ride.decrementAvailableSeat();// decrement the seat availability by one as this requester is assigned this ride 
-                            rideList.add(ride);
-                            ride.getPassengers().add(request.getRequester());
-                            request.markAllocated();
-                            ride.setRideStatus(RideStatus.IN_PROGRESS);
-                            break;// once the requested ride is found the break out
-                        }
+        List<Ride> availableRidesBasedOnStrategy = findRides(request.getStrategy(),allUserRides);
+                for(Ride ride : availableRidesBasedOnStrategy){
+                    if(!request.getRequester().equals(ride.getOwner()) && !ride.getRideStatus().equals(RideStatus.COMPLETED) && ride.getSeatAVailability()>=1  && ride.getSource().equals(request.getSource()) && ride.getDestination().equals(request.getDestination())){
+                        // the user of the request has requested for one ride, hence update the requested stats
+                        userManager.updateTakenStats(request.getRequester().getUserName(), 1);
+                        ride.decrementAvailableSeat();// decrement the seat availability by one as this requester is assigned this ride 
+                        rideList.add(ride);
+                        ride.getPassengers().add(request.getRequester());
+                        request.markAllocated();
+                        ride.setRideStatus(RideStatus.IN_PROGRESS);
+                        break;// once the requested ride is found the break out
                     }
-                    if(request.isAllocated()) break;
                 }
                 print(rideList.toString());
             }
             
-            private List<Ride> findRides(RideStrategy strategy, Map<String,List<Ride>> allUserRides, RideRequest request) {
-                setRideStrategy(strategy); 
-                return this.rideStrategy.findRidesByStrategy(allUserRides,request);
+    private List<Ride> findRides(RideStrategy strategy, Map<String,List<Ride>> allUserRides) {
+        setRideStrategy(strategy); 
+        return this.rideStrategy.findRidesByStrategy(allUserRides);
 
-            }
-            public void endRide(Ride ride){
+    }
+    public void endRide(Ride ride){
         List<Ride> rs = allUserRides.get(ride.getOwner().getUserName());
         if(rs.contains(ride)) {
             ride.setRideStatus(RideStatus.COMPLETED);

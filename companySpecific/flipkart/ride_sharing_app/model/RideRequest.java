@@ -1,6 +1,6 @@
 package companySpecific.flipkart.ride_sharing_app.model;
 
-import companySpecific.flipkart.ride_sharing_app.RideStrategy;
+import companySpecific.flipkart.ride_sharing_app.ride_strategy.RideStrategy;
 
 public class RideRequest {
     private RideUser requester;

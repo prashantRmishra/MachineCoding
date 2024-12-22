@@ -84,3 +84,28 @@ Shashank: 0 Taken, 1 Offered
 Gaurav: 1 Taken, 0 Offered
 Rahul: 0 Taken, 0 Offered 
 Shipra: 0 Taken, 2 Offered
+
+
+
+Output:
+
+```output
+Ride sharing app!!
+ride added/created 
+ride added/created 
+ride added/created 
+ride added/created 
+ride added/created 
+Ride not created as ride already exists by the same owner rohan for the same/different source and destination
+[Rides: [rideId=9, owner=shilpa, passengers=[[user=nandini]], seatAVailability=1, rideStatus=IN_PROGRESS, vehicle=[vno.=KA-01-5454, owner=shilpa, vehicleType=FOUR_WHEELER_SEDAN, vehicleModel=polo], source=bangalore, destination=mysore]]
+[Rides: [rideId=8, owner=shilpa, passengers=[[user=gaurav]], seatAVailability=0, rideStatus=IN_PROGRESS, vehicle=[vno.=KA-12-1233, owner=shilpa, vehicleType=TWO_WHEELER, vehicleModel=activa], source=bangalore, destination=mysore]]
+[]
+[Rides: [rideId=10, owner=shashank, passengers=[[user=rohan]], seatAVailability=1, rideStatus=IN_PROGRESS, vehicle=[vno.=KA-01-76755, owner=shashank, vehicleType=FOUR_WHEELER_SEDAN, vehicleModel=baleno], source=hyderabad, destination=bangalore]]
+[]
+[user shilpa, ride taken=0, ride offered=2]
+[user rohan, ride taken=1, ride offered=1]
+[user rahul, ride taken=0, ride offered=1]
+[user shashank, ride taken=0, ride offered=1]
+[user nandini, ride taken=1, ride offered=0]
+[user gaurav, ride taken=1, ride offered=0]
+```

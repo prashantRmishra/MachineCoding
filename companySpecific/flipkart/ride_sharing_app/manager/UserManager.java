@@ -1,4 +1,4 @@
-package companySpecific.flipkart.ride_sharing_app;
+package companySpecific.flipkart.ride_sharing_app.manager;
 
 import java.util.HashMap;
 import java.util.Map;
