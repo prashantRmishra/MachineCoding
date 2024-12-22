@@ -86,8 +86,182 @@ Rahul: 0 Taken, 0 Offered
 Shipra: 0 Taken, 2 Offered
 
 
+## Overview
 
-Output:
+This project is a **Ride Sharing Application** designed to simulate a system where users can offer and request rides. It includes features for registering rides, managing users, applying ride allocation strategies, and tracking ride statistics.
+
+---
+
+## Project Structure
+
+### Class diagram
+![class-diagram](image.png)
+
+### **Packages**
+
+- `manager`: Contains classes to manage rides and users.
+- `model`: Includes data models for users, rides, vehicles, and ride requests.
+- `ride_strategy`: Implements strategies for allocating rides.
+- `ride_sharing_app`: Contains utility classes and the main controller.
+
+---
+
+## Core Components
+
+### **1. Ride Management**
+
+- ``
+  - Manages the lifecycle of rides (registration, allocation, completion).
+  - Tracks all rides offered by users.
+  - Supports different ride allocation strategies.
+  - Ensures ride uniqueness per user and vehicle.
+
+### **2. User Management**
+
+- ``
+  - Manages user profiles and their stats.
+  - Tracks rides offered and taken by users.
+
+### **3. Ride Models**
+
+- ``
+  - Represents a ride being registered by a user.
+- ``
+  - Represents a ride with details like owner, passengers, vehicle, source, and destination.
+- ``
+  - Represents a request to join a ride.
+- ``
+  - Enum to represent the ride's state (e.g., `REGISTRATION`, `IN_PROGRESS`, `COMPLETED`).
+- ``
+  - Tracks statistics of rides offered and taken by users.
+
+### **4. Ride Strategies**
+
+- ``
+  - Abstract class or interface that defines the `findRides` method.
+  - Allows implementing custom logic for filtering rides based on specific criteria.
+- **Examples of Implementations**
+  - ``: Filters rides based on the type of vehicle (e.g., sedan, hatchback).
+  - ``: Prioritizes rides with the most vacant seats.
+  - ``: Chooses rides closest to the requested destination.
+
+### **5. Controller**
+
+- Manages interactions between the user and the system.
+- Provides APIs for:
+  - Registering rides.
+  - Requesting rides.
+  - Completing rides.
+  - Viewing ride statistics.
+
+---
+
+## How It Works
+
+1. **Register a Ride**:
+
+   - A user offers a ride using the `RegisterRide` model.
+   - `RideSharingManager` validates and stores the ride.
+
+2. **Request a Ride**:
+
+   - A user requests a ride using the `RideRequest` model.
+   - `RideSharingManager` finds suitable rides based on the chosen strategy.
+
+3. **Complete a Ride**:
+
+   - Marks a ride as `COMPLETED` and updates the stats.
+
+4. **View Statistics**:
+
+   - Displays the number of rides offered and taken by each user.
+
+---
+
+## Usage Example
+
+### **Registering a Ride**
+
+```java
+RideUser owner = new RideUser("John");
+RideVehicle vehicle = new RideVehicle("KA01AB1234", owner, RideVehicleType.FOUR_WHEELER_SEDAN, "Baleno");
+RegisterRide ride = new RegisterRide(owner, 4, "Bangalore", "Mysore", vehicle);
+Controller controller = new Controller(new RideSharingManager(new UserManager()));
+controller.createRide(ride);
+```
+
+### **Requesting a Ride**
+
+```java
+RideUser requester = new RideUser("Doe");
+RideRequest request = new RideRequest(requester, "Bangalore", "Mysore", 1, new VacancyStrategy());
+controller.requestRide(request);
+```
+
+### **Completing a Ride**
+
+```java
+Ride rideToComplete = ... // fetched from available rides
+controller.completeRide(rideToComplete);
+```
+
+### **Viewing Stats**
+
+```java
+controller.getStats();
+```
+
+---
+
+## Design Principles
+
+1. **Modularity**:
+
+   - Separation of concerns with `manager`, `model`, and `ride_strategy` packages.
+
+2. **Strategy Pattern**:
+
+   - Dynamic allocation of rides using different strategies.
+
+3. **Synchronization**:
+
+   - Ensures thread safety during ride creation and allocation.
+
+4. **Scalability**:
+
+   - Easily extendable to include new ride allocation strategies or user features.
+
+---
+
+## Future Enhancements
+
+- Implement payment integration.
+- Add location-based ride suggestions using GPS data.
+- Build a UI for better user interaction.
+- Include cancellation policies for rides.
+
+---
+
+## Prerequisites
+
+- **Java 8 or higher**
+- Maven for dependency management.
+
+---
+
+## Run Instructions
+
+1. Clone the repository.
+2. Build the project using `mvn clean install`.
+3. Run the main controller class.
+
+---
+
+Feel free to explore and extend the application! 😊
+
+
+
+Output that you get once you run the `driver.java`
 
 ```output
 Ride sharing app!!
