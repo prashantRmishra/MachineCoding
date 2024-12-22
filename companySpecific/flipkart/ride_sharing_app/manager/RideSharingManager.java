@@ -65,7 +65,7 @@ public class RideSharingManager {
         return this.rideStrategy.findRidesByStrategy(allUserRides);
 
     }
-    public void endRide(Ride ride){
+    public synchronized void endRide(Ride ride){
         List<Ride> rs = allUserRides.get(ride.getOwner().getUserName());
         if(rs.contains(ride)) {
             ride.setRideStatus(RideStatus.COMPLETED);
