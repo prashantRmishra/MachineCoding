@@ -1,4 +1,4 @@
-package bus_booking_service_like_redbus;
+package bus_booking_service_like_redbus.utility;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

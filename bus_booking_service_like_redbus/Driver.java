@@ -14,10 +14,10 @@ import bus_booking_service_like_redbus.model.BusType;
 import bus_booking_service_like_redbus.model.BusUser;
 import bus_booking_service_like_redbus.model.Operator;
 import bus_booking_service_like_redbus.model.Seat;
+import bus_booking_service_like_redbus.model.SourceDestination;
 import bus_booking_service_like_redbus.service.BookingService;
 import bus_booking_service_like_redbus.service.PaymentService;
 import bus_booking_service_like_redbus.service.SearchService;
-import bus_booking_service_like_redbus.service.SourceDestination;
 import bus_booking_service_like_redbus.utility.Functions;
 import bus_booking_service_like_redbus.utility.Logger;
 

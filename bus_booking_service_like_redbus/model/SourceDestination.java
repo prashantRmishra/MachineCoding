@@ -1,4 +1,4 @@
-package bus_booking_service_like_redbus.service;
+package bus_booking_service_like_redbus.model;
 
 import java.util.Objects;
 

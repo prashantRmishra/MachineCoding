@@ -8,9 +8,9 @@ import bus_booking_service_like_redbus.model.Booking;
 import bus_booking_service_like_redbus.model.Bus;
 import bus_booking_service_like_redbus.model.BusUser;
 import bus_booking_service_like_redbus.model.Seat;
+import bus_booking_service_like_redbus.model.SourceDestination;
 import bus_booking_service_like_redbus.service.BookingService;
 import bus_booking_service_like_redbus.service.SearchService;
-import bus_booking_service_like_redbus.service.SourceDestination;
 import bus_booking_service_like_redbus.utility.Logger;
 
 public class BusBookingController {

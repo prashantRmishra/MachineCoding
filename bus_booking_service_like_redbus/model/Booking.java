@@ -1,6 +1,6 @@
 package bus_booking_service_like_redbus.model;
 
-import bus_booking_service_like_redbus.BusServiceUtility;
+import bus_booking_service_like_redbus.utility.BusServiceUtility;
 
 public class Booking {
     private int bookingId;
