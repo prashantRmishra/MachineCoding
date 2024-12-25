@@ -13,6 +13,13 @@ public class Bus {
     private double fare;
     private BusType busType;
     private LocalDate travelDate;
+    @Override
+    public String toString() {
+        return "Bus [busNo=" + busNo + ", operator=" + operator.getOperatorName() + ", source=" + source + ", destination=" + destination
+                + ", rating=" + rating + ", fare=" + fare + ", busType=" + busType + ", travelDate=" + travelDate
+                + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", seats=" + seats.size() + ", driver="
+                + driver.getUserName() + "]";
+    }
     private LocalTime departureTime;
     private LocalTime arrivalTime;
     private List<Seat> seats;

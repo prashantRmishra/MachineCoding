@@ -8,6 +8,11 @@ public class Booking {
     private Bus bus;
     private double fare;
     private Seat seat;
+    @Override
+    public String toString() {
+        return "Booking [bookingId=" + bookingId + ", bus=" + bus.getBusNo()+", date "+ bus.getTravelDate()+", source "+ bus.getSource()+", dest "+ bus.getDestination() + ", fare=" + fare
+                + ", seat=" + seat.getSetNo() + "]";
+    }
     public Booking(BusUser passenger, Bus bus, double fare, Seat seat) {
         this.passenger = passenger;
         this.bus = bus;

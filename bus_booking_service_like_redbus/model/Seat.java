@@ -15,8 +15,14 @@ public class Seat {
     public BusUser getUser() {
         return user;
     }
+    public void updateUser(BusUser user){
+        this.user = user;
+    }
     public SeatStatus getStatus() {
         return status;
+    }
+    public synchronized void updateStatus(SeatStatus status){
+        this.status = status;
     }
 
 }
