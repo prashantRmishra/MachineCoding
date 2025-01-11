@@ -44,6 +44,10 @@ Design a simplified version of Google Docs, a collaborative online document edit
 
 ---
 
+### Rough Class Diagram
+
+![classdiagram](image.png)
+
 ### **Strengths**
 1. **Use of Design Patterns**:
    - **Memento Pattern**: The use of the `DocMemento` class for versioning and saving/restoring document states is apt for handling undo/redo functionality.
