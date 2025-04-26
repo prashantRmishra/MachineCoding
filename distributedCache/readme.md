@@ -1,5 +1,5 @@
 
-# 📄 Problem Statement: Design a Distributed Cache System
+# LLD of a Distributed Cache System
 
 [Same as InMemory Key value store](../InMemoryKeyValueStore/Readme.md)
 
@@ -9,12 +9,10 @@ The system should cache **key-value pairs** in memory, with the ability to **sca
 
 ---
 
-# 🧩 Requirements:
+# Requirements:
 
 ### 1. Basic Functionalities:
-- `put(key, value)` → Store a key-value pair.
-- `get(key)` → Retrieve the value associated with a key.
-- `delete(key)` → Remove a key-value pair.
+put(k,v),get(k),remove(k)
 
 ### 2. Expiry / TTL (Time to Live):
 - Allow setting an optional **expiration time** when storing a key.
@@ -22,20 +20,15 @@ The system should cache **key-value pairs** in memory, with the ability to **sca
 
 ### 3. Scalability:
 - The cache must support **multiple servers (nodes)**.
-- Keys should be **evenly distributed across nodes** (hint: **consistent hashing** or simple modulo based).
+- Keys should be **evenly distributed across nodes** (this is achieved via module operation to get the server no.)
 
-### 4. Fault Tolerance:
-- If a node goes down, minimal impact should happen (basic replication is a bonus but not mandatory for a simple version).
 
-### 5. Performance:
-- Reads and writes should be **fast** (target O(1) time complexity ideally).
-
-### 6. Memory Management (Optional):
+### 6. Memory Management (Optional not done in this code):
 - If memory is full, you can implement **eviction policies** like **LRU** (Least Recently Used) or **LFU** (Least Frequently Used).
 
 ---
 
-# 📦 Scope and Assumptions:
+# Scope and Assumptions:
 
 - Assume **single data center** (no cross-region replication yet).
 - Assume **in-memory only** (no persistence to disk for now).
@@ -45,28 +38,8 @@ The system should cache **key-value pairs** in memory, with the ability to **sca
   
 ---
 
-# ✏️ Example API:
 
-```java
-DistributedCache cache = new DistributedCache(5 /* number of nodes */);
-
-cache.put("user:1", "John Doe");
-String name = cache.get("user:1"); // John Doe
-
-Thread.sleep(5000);
-String name = cache.get("user:1"); // returns null if expired
-```
-
----
-
-# 💬 Clarifications you can ask if it's an interview:
-- Do we need replication? (Optional for MVP)
-- What happens if a node crashes? (for now, assume static nodes unless specified)
-- Eviction policy like LRU needed? (only if cache is memory-bounded)
-
----
-
-# ⚡ Extensions (if you complete early):
+# Extensions (if you complete early):
 - Add **replication** (write to two nodes for redundancy).
 - Add **LRU eviction** per node if memory is limited.
 - Real networking using TCP sockets or gRPC.
@@ -74,7 +47,7 @@ String name = cache.get("user:1"); // returns null if expired
 
 ---
 
-# 🚀 Bonus Tips:
+# Bonus Tips (not done in this code):
 - Use **consistent hashing** to map keys to nodes.
 - Design clean interfaces: `Node`, `DistributedCache`, `Cache`, `EvictionPolicy`.
 - Unit test basic flows: put → get → expire → delete.
@@ -82,13 +55,12 @@ String name = cache.get("user:1"); // returns null if expired
 ---
 
 ---
-# 🎯 Summary of Deliverables:
-- `put`, `get`, `delete`
+# Summary of Deliverables:
+- `put`, `get`, `remove`
 - TTL (expiry)
-- Multiple nodes simulation
-- Consistent hashing (or any distribution)
-- (Optional) LRU/LFU eviction
+- Multiple nodes simulation (via module operation)
 
+# Sample output of the code
 
 ```output
 Putting keys with TTL...
