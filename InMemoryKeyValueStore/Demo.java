@@ -2,7 +2,7 @@ package InMemoryKeyValueStore;
 
 public class Demo {
     public static void main(String[] args) {
-        InMemoryKeyValueStore inMemoryKeyValueStore = new InMemoryKeyValueStore<String,String>();
+        InMemoryKeyValueStore<String,String> inMemoryKeyValueStore = new InMemoryKeyValueStore<>();
 
         inMemoryKeyValueStore.put("prashant", "prashant is super rich", 10);
         inMemoryKeyValueStore.put("sandeep", "sandeep is super rich as well", 3);
