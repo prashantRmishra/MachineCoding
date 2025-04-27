@@ -10,7 +10,7 @@ The system should handle concurrent registration requests from multiple students
 The system should ensure data consistency and prevent race conditions.
 The system should be extensible to accommodate future enhancements and new features.
 
-Entities:
+Entities:<br>
 Student <br>
 Instructor<br>
 Course<br>
