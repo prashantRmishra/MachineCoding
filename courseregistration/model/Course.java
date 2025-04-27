@@ -1,12 +1,12 @@
-package courseregistration;
+package courseregistration.model;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Course {
-    String code;
-    String name;
-    AtomicInteger maxCapacity;
-    Instructor instructor;
+    public String code;
+    public String name;
+    public AtomicInteger maxCapacity;
+    public Instructor instructor;
     @Override
     public String toString() {
         return "Course [code=" + code + ", name=" + name + ", instructor=" + instructor + ", currentStudents="

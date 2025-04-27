@@ -1,19 +1,29 @@
-package courseregistration;
+package courseregistration.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+
+import courseregistration.exceptions.CourseAlreadyExistsException;
+import courseregistration.exceptions.CourseIsFullException;
+import courseregistration.exceptions.CourseNotFoundException;
+import courseregistration.exceptions.StudentNotRegisteredForCourseException;
+import courseregistration.exceptions.UserAlreadyPresentException;
+import courseregistration.exceptions.UserNotFoundException;
+import courseregistration.model.Course;
+import courseregistration.model.Instructor;
+import courseregistration.model.UniversityStudent;
+import courseregistration.strategy.SearchByName;
+import courseregistration.strategy.SearchStrategy;
 
 public class CourseRegistrationService {
-    Map<String,List<String>> registrationDetailsPerStudent;
-    Map<String,List<String>> registrationDetailsPerCourse;
-    Map<String,Course> courses;
-    Map<String,UniversityStudent> students;
-    Map<String,Instructor> instructors;
+    public Map<String,List<String>> registrationDetailsPerStudent;
+    public Map<String,List<String>> registrationDetailsPerCourse;
+    public Map<String,Course> courses;
+    public Map<String,UniversityStudent> students;
+    public Map<String,Instructor> instructors;
     SearchStrategy searchStrategy;
     private ReentrantLock lock = new ReentrantLock();
 

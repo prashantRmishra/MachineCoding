@@ -1,5 +1,11 @@
 package courseregistration;
 
+import courseregistration.model.Course;
+import courseregistration.model.Instructor;
+import courseregistration.model.UniversityStudent;
+import courseregistration.service.CourseRegistrationService;
+import courseregistration.strategy.SearchByName;
+
 public class Demo {
     public static void main(String[] args)  throws Exception{
 

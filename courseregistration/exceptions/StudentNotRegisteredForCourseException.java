@@ -1,4 +1,4 @@
-package courseregistration;
+package courseregistration.exceptions;
 
 public class StudentNotRegisteredForCourseException extends RuntimeException {
 

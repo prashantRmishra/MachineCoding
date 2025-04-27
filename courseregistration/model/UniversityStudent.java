@@ -1,9 +1,11 @@
-package courseregistration;
+package courseregistration.model;
+
+import courseregistration.helper.UniversityIdGenerator;
 
 public class UniversityStudent {
-    String name;
-    String email;
-    String id;
+    public String name;
+    public  String email;
+    public String id;
     @Override
     public String toString() {
         return "UniversityStudent [name=" + name + ", email=" + email + ", id=" + id + "]";

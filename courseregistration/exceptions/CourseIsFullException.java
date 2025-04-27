@@ -1,4 +1,4 @@
-package courseregistration;
+package courseregistration.exceptions;
 
 public class CourseIsFullException extends RuntimeException{
 

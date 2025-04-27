@@ -1,8 +1,10 @@
-package courseregistration;
+package courseregistration.strategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import courseregistration.model.Course;
 
 public class SearchByCode implements SearchStrategy {
 
