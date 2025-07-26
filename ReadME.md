@@ -25,6 +25,7 @@ A curated collection of low-level design (LLD) problems implemented in Java. Eac
 | Bus Booking Service (RedBus-like) | Bus ticket booking system with seat selection and route management. | [ReadMe](bus_booking_service_like_redbus/readme.md) |
 | Company-Specific Problems | Specialized LLD problems asked in interviews at top tech companies. | [ReadMe](companySpecific/readme.md) |
 | Design Patterns | Reference implementations and explanations of common design patterns. | [ReadMe](Patterns/README.md) |
+|Distributed Logging System|Simple distriubted logging system using java|[ReadMe](distriubtedLoggingSystem/readme.md)|
 
 ---
 
